@@ -4,92 +4,169 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>강청림 chungrim.me</title>
-<meta name="description" content="외식업 기획. 컨설팅. 앱서비스. 강청림이 걸어온 길.">
-<meta name="theme-color" content="#0a1c1b">
-<link rel="preload" as="font" type="font/woff2" crossorigin href="https://cdn.jsdelivr.net/npm/galmuri@latest/dist/Galmuri11.woff2">
+<meta name="description" content="외식업 기획. 컨설팅. 앱서비스. 강청림이 하는 일과 생각.">
+<meta name="theme-color" content="#0b1a18">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <style>
-@font-face{font-family:Galmuri11;src:url(https://cdn.jsdelivr.net/npm/galmuri@latest/dist/Galmuri11.woff2) format("woff2");font-display:swap}
-@font-face{font-family:Galmuri7;src:url(https://cdn.jsdelivr.net/npm/galmuri@latest/dist/Galmuri7.woff2) format("woff2");font-display:swap}
-:root{--bg:#0a1c1b;--ink:#eef4f0;--muted:#9fb6af;--line:#274a45;--card:rgba(13,38,36,.94);--accent:#7fd3c1;--blue:#5B8DEF}
+:root{
+  --bg:#0b1a18;--bg2:#0f2622;
+  --ink:#eaf2ee;--ink2:#b9cbc4;--muted:#7f9a92;
+  --line:rgba(190,225,214,.12);--line2:rgba(190,225,214,.22);
+  --mint:#8fe0cc;--mint2:#3fbfa3;
+  --blue:#5B8DEF;--blue2:#3f6fd6;
+  --steel:linear-gradient(180deg,#1a302c 0%,#142622 100%);
+}
 *{box-sizing:border-box}
-html{background:var(--bg)}
-body{margin:0;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard","Noto Sans KR",system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+html{background:var(--bg);scroll-behavior:smooth}
+body{margin:0;color:var(--ink);font-family:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+  background:
+    radial-gradient(900px 600px at 50% -10%,rgba(63,191,163,.16),transparent 60%),
+    linear-gradient(180deg,#0d211e 0%,var(--bg) 40%,#081312 100%);}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.07;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .5 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");}
 a{color:inherit}
-.world{position:relative;min-height:100svh}
-.world canvas{position:sticky;top:0;display:block;width:100%;height:100svh;z-index:0}
-.px{font-family:Galmuri11,monospace;letter-spacing:1px}
+.wrap{position:relative;z-index:1;max-width:460px;margin:0 auto;padding:0 20px}
 
-/* 첫 화면: 링크 목록 */
-.hero{position:absolute;left:0;right:0;top:0;z-index:2;display:flex;justify-content:center;padding:max(28px,env(safe-area-inset-top)) 20px 20px}
-.hero .card{width:100%;max-width:420px;background:var(--card);border:2px solid var(--line);box-shadow:4px 4px 0 #04100f;padding:26px 20px 18px;backdrop-filter:blur(2px)}
-.hero .who{text-align:center}
-.hero .who img{width:84px;height:84px;border-radius:50%;object-fit:cover;border:3px solid var(--accent);image-rendering:auto}
-.hero .who b{display:block;font-size:22px;margin-top:12px;letter-spacing:-.01em}
-.hero .who .tag{display:block;color:var(--muted);font-size:14px;margin-top:6px;line-height:1.5}
-.hero .who .handle{display:block;font:11px Galmuri11,monospace;color:var(--accent);letter-spacing:1px;margin-top:8px}
-.links{display:flex;flex-direction:column;gap:10px;margin-top:22px}
-.links a{display:flex;align-items:center;justify-content:space-between;gap:10px;text-decoration:none;font-weight:700;font-size:15px;padding:14px 16px;background:#153733;border:1px solid #2a5852;color:#fff;transition:transform .08s}
-.links a:active{transform:translate(2px,2px)}
-.links a small{font-weight:500;font-size:12px;color:var(--muted);margin-left:8px}
-.links a.blue{background:var(--blue);border-color:#6f9cf3}
-.links a.blue small{color:#e4ecff}
-.links a.insta{background:linear-gradient(120deg,#f0645f,#c73b8f,#6a45c6);border-color:transparent}
-.links a.insta small{color:#ffe6f2}
-.links a span:last-child{opacity:.7}
-.hint{position:absolute;left:0;right:0;z-index:2;text-align:center;font:12px/1.4 Galmuri11,monospace;letter-spacing:1px;color:#cfe6de;pointer-events:none;transition:opacity .4s}
-.hint.off{opacity:0}
+/* 프로필 */
+.me{padding:max(40px,calc(env(safe-area-inset-top) + 28px)) 0 8px;text-align:center}
+.me .pic{width:112px;height:112px;margin:0 auto;border-radius:50%;padding:3px;background:linear-gradient(160deg,var(--mint),rgba(143,224,204,.15) 60%,rgba(143,224,204,.0));
+  box-shadow:0 18px 40px -18px rgba(63,191,163,.55)}
+.me .pic img{display:block;width:100%;height:100%;border-radius:50%;object-fit:cover;object-position:50% 20%;filter:grayscale(1) contrast(1.05);border:2px solid var(--bg)}
+.me h1{font-size:26px;font-weight:800;letter-spacing:-.02em;margin:18px 0 0}
+.me .tag{margin:8px 0 0;font-size:15px;color:var(--ink2);letter-spacing:-.01em}
+.me .site{display:inline-block;margin-top:12px;font-size:12px;font-weight:600;letter-spacing:.12em;color:var(--mint);text-transform:uppercase}
 
-/* 거리의 가게 표지판 */
-.stop{position:absolute;z-index:2;width:min(70vw,300px);background:var(--card);border:2px solid var(--line);box-shadow:4px 4px 0 #04100f;padding:12px 14px 12px;transition:border-color .25s,box-shadow .25s}
-.stop.on{border-color:var(--accent);box-shadow:4px 4px 0 #04100f,0 0 0 4px rgba(127,211,193,.12)}
-.stop.l{left:12px}.stop.r{right:12px}
-.stop .eyebrow{font:10px/1 Galmuri7,monospace;letter-spacing:1px;color:var(--accent);margin:0 0 8px}
-.stop h2{font-size:17px;line-height:1.25;letter-spacing:-.01em;margin:0}
-.stop .sub{color:var(--muted);font-size:13px;line-height:1.5;margin:4px 0 0}
-.stop .btn{display:flex;align-items:center;justify-content:space-between;text-decoration:none;font-weight:700;font-size:13px;padding:10px 12px;margin-top:12px;background:#153733;color:#fff;border:1px solid #2a5852}
-.stop .btn.blue{background:var(--blue);border-color:#6f9cf3}
-.stop .btn.insta{background:linear-gradient(120deg,#f0645f,#c73b8f,#6a45c6);border-color:transparent}
-.stop.end{width:min(80vw,340px);left:50%;transform:translateX(-50%);text-align:center}
-.stop.end .btn{justify-content:center;gap:8px}
-.stop.end footer{margin-top:14px;color:var(--muted);font-size:11px;line-height:1.7}
-.stop.end footer .me{font:12px Galmuri11,monospace;color:var(--accent);letter-spacing:1px}
-@media(min-width:700px){.stop{width:320px}.stop.l{left:calc(50% - 360px)}.stop.r{right:calc(50% - 360px)}}
-@media(prefers-reduced-motion:reduce){.links a{transition:none}}
+/* 링크 */
+.links{display:flex;flex-direction:column;gap:10px;margin:26px 0 0}
+.links a{position:relative;display:flex;align-items:center;gap:12px;min-height:60px;padding:0 18px 0 16px;text-decoration:none;
+  background:var(--steel);border:1px solid var(--line2);border-radius:14px;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 10px 24px -18px rgba(0,0,0,.9);
+  transition:transform .12s ease,border-color .12s ease,background .12s ease}
+.links a:hover{border-color:rgba(143,224,204,.5)}
+.links a:active{transform:scale(.985)}
+.links .ic{flex:none;width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:rgba(143,224,204,.1);color:var(--mint);font-size:13px;font-weight:800;letter-spacing:-.02em}
+.links .ic img{width:100%;height:100%;object-fit:cover;border-radius:10px}
+.links .t{flex:1;min-width:0;font-size:16px;font-weight:700;letter-spacing:-.01em;line-height:1.3}
+.links .t em{display:block;font-style:normal;font-weight:500;font-size:12px;color:var(--muted);margin-top:2px}
+.links .ar{flex:none;color:var(--muted);font-size:16px}
+.links a.ws{background:linear-gradient(180deg,var(--blue) 0%,var(--blue2) 100%);border-color:rgba(255,255,255,.22);color:#fff;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 16px 34px -18px rgba(91,141,239,.9)}
+.links a.ws .ic{background:rgba(255,255,255,.18);color:#fff}
+.links a.ws .t em{color:#dbe6ff}
+.links a.ws .ar{color:#fff}
+.links a.ig .ic{background:linear-gradient(135deg,#f9a24a,#e1306c 55%,#7b3fe4);color:#fff}
+.links .sec{margin:14px 2px 0;font-size:11px;font-weight:600;letter-spacing:.14em;color:var(--muted);text-transform:uppercase}
+
+/* 아래로 안내 */
+.down{margin:40px 0 24px;text-align:center;color:var(--muted);font-size:13px}
+.down span{display:block;margin:10px auto 0;width:1px;height:38px;background:linear-gradient(180deg,var(--mint),transparent)}
+
+/* 채팅 Q&A */
+.chat{padding:8px 0 80px}
+.chat .head{display:flex;align-items:center;gap:12px;padding:14px 4px 18px;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:2;
+  background:linear-gradient(180deg,rgba(11,26,24,.97),rgba(11,26,24,.85));backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.chat .head img{width:40px;height:40px;border-radius:50%;object-fit:cover;background:#fff}
+.chat .head b{display:block;font-size:15px;font-weight:700}
+.chat .head small{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);margin-top:2px}
+.chat .head small i{width:7px;height:7px;border-radius:50%;background:var(--mint2);box-shadow:0 0 0 3px rgba(63,191,163,.18)}
+.day{margin:26px auto 4px;width:max-content;font-size:11px;color:var(--muted);letter-spacing:.06em;padding:4px 10px;border:1px solid var(--line);border-radius:999px}
+.msg{display:flex;align-items:flex-end;gap:8px;margin-top:14px;opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
+.msg.in{opacity:1;transform:none}
+.msg.q{justify-content:flex-start}
+.msg.a{justify-content:flex-end}
+.msg .av{flex:none;width:30px;height:30px;border-radius:50%;object-fit:cover;background:#fff;align-self:flex-start}
+.msg.q .av{background:#1a302c;color:var(--mint);display:grid;place-items:center;font-size:12px;font-weight:800}
+.bub{max-width:82%;padding:12px 15px;font-size:15px;line-height:1.6;letter-spacing:-.01em;word-break:keep-all;white-space:pre-line}
+.msg.q .bub{background:#17302b;border:1px solid var(--line2);border-radius:18px 18px 18px 6px;color:var(--ink)}
+.msg.a .bub{background:linear-gradient(180deg,#3fbfa3,#2fa78d);color:#06201a;border-radius:18px 18px 6px 18px;font-weight:500;box-shadow:0 14px 30px -18px rgba(63,191,163,.8)}
+.msg.a .bub b{font-weight:800}
+.msg.a .name{display:none}
+.typing{display:inline-flex;gap:4px;padding:12px 14px}
+.typing i{width:6px;height:6px;border-radius:50%;background:#06201a;opacity:.5;animation:blink 1s infinite}
+.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+@keyframes blink{0%,80%,100%{opacity:.25}40%{opacity:.9}}
+.ask{margin-top:34px;display:flex;gap:8px;align-items:center;padding:8px 8px 8px 16px;border:1px solid var(--line2);border-radius:999px;background:rgba(255,255,255,.03);color:var(--muted);font-size:14px}
+.ask span{flex:1}
+.ask a{flex:none;text-decoration:none;font-size:13px;font-weight:700;color:#06201a;background:var(--mint);padding:10px 14px;border-radius:999px}
+footer{padding:0 0 max(28px,env(safe-area-inset-bottom));text-align:center;color:var(--muted);font-size:12px;line-height:1.8}
+footer b{color:var(--mint);font-weight:600;letter-spacing:.1em}
+@media(prefers-reduced-motion:reduce){.msg{opacity:1;transform:none;transition:none}.typing i{animation:none}html{scroll-behavior:auto}}
+@media(min-width:900px){.wrap{max-width:520px}.me .pic{width:128px;height:128px}}
 </style>
 </head>
 <body>
-<div class="world" id="world">
-<canvas id="c" aria-label="위에서 내려다본 픽셀 거리를 걷는 강청림 캐릭터" role="img"></canvas>
+<main class="wrap">
 
-<div class="hero" id="hero">
-  <div class="card">
-    <div class="who">
-      <img src="assets/portrait.jpg" alt="강청림">
-      <b>강청림</b>
-      <span class="tag">외식업 기획. 컨설팅. 앱서비스.</span>
-      <span class="handle">chungrim.me</span>
-    </div>
-    <nav class="links">
-      <a href="https://naver.me/FBe2jxbP" target="_blank" rel="noopener"><span>뱃꼬동 해물포차<small>구월점</small></span><span>→</span></a>
-      <a href="https://naver.me/FLEIjH4e" target="_blank" rel="noopener"><span>뱃꼬동 해물포차<small>부평점</small></span><span>→</span></a>
-      <a href="https://naver.me/GJ5AwLhq" target="_blank" rel="noopener"><span>뱃꼬동 숙성집<small>구월점</small></span><span>→</span></a>
-      <a href="https://naver.me/GNJh3uQR" target="_blank" rel="noopener"><span>뱃꼬동 숙성집<small>전주 신시가지점</small></span><span>→</span></a>
-      <a href="https://naver.me/FbVoibsV" target="_blank" rel="noopener"><span>철계직화장<small>구월점</small></span><span>→</span></a>
-      <a class="blue" href="https://westoreapp.com" target="_blank" rel="noopener"><span>위스토어<small>매장 운영 앱</small></span><span>→</span></a>
-      <a class="insta" href="https://instagram.com/cxnrim" target="_blank" rel="noopener"><span>Instagram<small>@cxnrim</small></span><span>→</span></a>
-    </nav>
+<section class="me">
+  <div class="pic"><img src="assets/portrait.jpg" alt="강청림"></div>
+  <h1>강청림</h1>
+  <p class="tag">외식업 기획. 컨설팅. 앱서비스.</p>
+  <span class="site">chungrim.me</span>
+</section>
+
+<nav class="links" aria-label="링크">
+  <a class="ws" href="https://westoreapp.com" target="_blank" rel="noopener">
+    <span class="ic">W</span>
+    <span class="t">위스토어<em>사장님과 직원이 함께 운영하는 매장 운영 앱</em></span>
+    <span class="ar">→</span>
+  </a>
+  <p class="sec">운영하는 매장</p>
+  <a href="https://naver.me/FBe2jxbP" target="_blank" rel="noopener"><span class="ic"><img src="assets/sea.jpg" alt=""></span><span class="t">뱃꼬동 해물포차 구월점</span><span class="ar">→</span></a>
+  <a href="https://naver.me/FLEIjH4e" target="_blank" rel="noopener"><span class="ic"><img src="assets/bupyeong.jpg" alt=""></span><span class="t">뱃꼬동 해물포차 부평점</span><span class="ar">→</span></a>
+  <a href="https://naver.me/GJ5AwLhq" target="_blank" rel="noopener"><span class="ic"><img src="assets/shop.jpg" alt=""></span><span class="t">뱃꼬동 숙성집 구월점</span><span class="ar">→</span></a>
+  <a href="https://naver.me/GNJh3uQR" target="_blank" rel="noopener"><span class="ic">숙</span><span class="t">뱃꼬동 숙성집 전주 신시가지점</span><span class="ar">→</span></a>
+  <a href="https://naver.me/FbVoibsV" target="_blank" rel="noopener"><span class="ic"><img src="assets/chicken.jpg" alt=""></span><span class="t">철계직화장 구월점</span><span class="ar">→</span></a>
+  <p class="sec">소식</p>
+  <a class="ig" href="https://instagram.com/cxnrim" target="_blank" rel="noopener"><span class="ic">◎</span><span class="t">Instagram<em>@cxnrim</em></span><span class="ar">→</span></a>
+</nav>
+
+<a class="down" href="#qa" style="display:block;text-decoration:none">궁금한 것들에 답해 뒀습니다<span></span></a>
+
+<section class="chat" id="qa" aria-label="질문과 답">
+  <div class="head">
+    <img src="assets/drawing.jpg" alt="">
+    <div><b>강청림</b><small><i></i>대답해 둔 것들</small></div>
   </div>
-</div>
-<div class="hint" id="hint">아래로 내리면 거리로 내려갑니다</div>
 
-<div class="stop l" data-stop="0"><p class="eyebrow">01 뱃꼬동</p><h2>뱃꼬동 해물포차</h2><p class="sub">구월점</p><a class="btn" href="https://naver.me/FBe2jxbP" target="_blank" rel="noopener">네이버 플레이스<span>→</span></a></div>
-<div class="stop r" data-stop="1"><p class="eyebrow">02 뱃꼬동</p><h2>뱃꼬동 해물포차</h2><p class="sub">부평점</p><a class="btn" href="https://naver.me/FLEIjH4e" target="_blank" rel="noopener">네이버 플레이스<span>→</span></a></div>
-<div class="stop l" data-stop="2"><p class="eyebrow">03 뱃꼬동</p><h2>뱃꼬동 숙성집</h2><p class="sub">구월점</p><a class="btn" href="https://naver.me/GJ5AwLhq" target="_blank" rel="noopener">네이버 플레이스<span>→</span></a></div>
-<div class="stop r" data-stop="3"><p class="eyebrow">04 뱃꼬동</p><h2>뱃꼬동 숙성집</h2><p class="sub">전주 신시가지점</p><a class="btn" href="https://naver.me/GNJh3uQR" target="_blank" rel="noopener">네이버 플레이스<span>→</span></a></div>
-<div class="stop l" data-stop="4"><p class="eyebrow">05 철계</p><h2>철계직화장</h2><p class="sub">구월점</p><a class="btn" href="https://naver.me/FbVoibsV" target="_blank" rel="noopener">네이버 플레이스<span>→</span></a></div>
-<div class="stop r" data-stop="5"><p class="eyebrow">거리 끝, 작업실</p><h2>위스토어</h2><p class="sub">사장님과 직원이 함께 운영하는 매장 운영 앱. 매장을 하면서 필요했던 것을 직접 만들었습니다.</p><a class="btn blue" href="https://westoreapp.com" target="_blank" rel="noopener">westoreapp.com<span>→</span></a></div>
-<div class="stop end" data-stop="6"><p class="eyebrow">다음 걸음</p><h2>같이 걸어요.</h2><p class="sub">새 가게, 새 브랜드, 새 서비스. 하는 일은 인스타에 올립니다.</p><a class="btn insta" href="https://instagram.com/cxnrim" target="_blank" rel="noopener">Instagram <small>@cxnrim</small><span>→</span></a><footer><div class="me">chungrim.me</div>강청림 / 외식업 기획. 컨설팅. 앱서비스.</footer></div>
-</div>
-<script src="street.js"></script>
+  <div class="day">자주 받는 질문</div>
+
+  <div class="msg q"><span class="av">?</span><div class="bub">뱃꼬동은 어떻게 시작하게 되었나요?</div></div>
+  <div class="msg a"><div class="bub">(청림님 답변 자리) 시작한 계기와 첫 가게 이야기를 여기에 씁니다.</div><img class="av" src="assets/drawing.jpg" alt=""></div>
+
+  <div class="msg q"><span class="av">?</span><div class="bub">뱃꼬동이 유명해지기까지 어떤 일이 있었나요?</div></div>
+  <div class="msg a"><div class="bub">(청림님 답변 자리) 잘 안 되던 때, 바뀐 계기, 지금까지 지키는 것을 씁니다.</div><img class="av" src="assets/drawing.jpg" alt=""></div>
+
+  <div class="msg q"><span class="av">?</span><div class="bub">그래서 대체 뭐 하는 사람이에요?</div></div>
+  <div class="msg a"><div class="bub">가게를 직접 운영하면서, 새 브랜드를 기획하고, 매장에서 필요했던 앱을 만듭니다.
+한 줄로 하면 <b>외식업 기획. 컨설팅. 앱서비스.</b></div><img class="av" src="assets/drawing.jpg" alt=""></div>
+
+  <div class="msg q"><span class="av">?</span><div class="bub">위스토어는 왜 만들었어요?</div></div>
+  <div class="msg a"><div class="bub">(청림님 답변 자리) 매장을 하면서 아쉬웠던 것, 그래서 어떤 앱을 만들었는지 씁니다.</div><img class="av" src="assets/drawing.jpg" alt=""></div>
+
+  <div class="msg q"><span class="av">?</span><div class="bub">가게를 여러 개 하면서 제일 중요하게 보는 건 뭐예요?</div></div>
+  <div class="msg a"><div class="bub">(청림님 답변 자리) 사람, 맛, 돈 중 무엇을 먼저 보는지 청림님 철학을 씁니다.</div><img class="av" src="assets/drawing.jpg" alt=""></div>
+
+  <div class="msg q"><span class="av">?</span><div class="bub">다음에는 뭘 할 거예요?</div></div>
+  <div class="msg a"><div class="bub">(청림님 답변 자리) 준비 중인 브랜드와 서비스 이야기를 씁니다.</div><img class="av" src="assets/drawing.jpg" alt=""></div>
+
+  <div class="msg a"><div class="bub typing"><i></i><i></i><i></i></div><img class="av" src="assets/drawing.jpg" alt=""></div>
+
+  <div class="ask"><span>더 궁금한 게 있으면</span><a href="https://instagram.com/cxnrim" target="_blank" rel="noopener">DM 보내기</a></div>
+</section>
+
+<footer><b>CHUNGRIM.ME</b><br>강청림 / 외식업 기획. 컨설팅. 앱서비스.</footer>
+</main>
+
+<script>
+(function(){
+  var msgs=document.querySelectorAll('.msg');
+  if(!('IntersectionObserver' in window)){msgs.forEach(function(m){m.classList.add('in')});return}
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+  },{rootMargin:'0px 0px -12% 0px',threshold:.15});
+  msgs.forEach(function(m){io.observe(m)});
+})();
+</script>
 </body>
 </html>

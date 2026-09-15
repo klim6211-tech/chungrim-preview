@@ -5,81 +5,91 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>강청림 chungrim.me</title>
 <meta name="description" content="외식업 기획. 컨설팅. 앱서비스. 강청림이 걸어온 길.">
-<meta name="theme-color" content="#0b1f1f">
+<meta name="theme-color" content="#0a1c1b">
 <link rel="preload" as="font" type="font/woff2" crossorigin href="https://cdn.jsdelivr.net/npm/galmuri@latest/dist/Galmuri11.woff2">
 <style>
 @font-face{font-family:Galmuri11;src:url(https://cdn.jsdelivr.net/npm/galmuri@latest/dist/Galmuri11.woff2) format("woff2");font-display:swap}
 @font-face{font-family:Galmuri7;src:url(https://cdn.jsdelivr.net/npm/galmuri@latest/dist/Galmuri7.woff2) format("woff2");font-display:swap}
-:root{--bg:#0d2624;--ink:#e9efe9;--muted:#9fb3ad;--line:#1e3f3b;--card:#122f2c;--accent:#7fd3c1;--blue:#5B8DEF}
+:root{--bg:#0a1c1b;--ink:#eef4f0;--muted:#9fb6af;--line:#274a45;--card:rgba(13,38,36,.94);--accent:#7fd3c1;--blue:#5B8DEF}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;background:var(--bg)}
+html{background:var(--bg)}
 body{margin:0;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard","Noto Sans KR",system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{color:inherit}
-.stage{position:sticky;top:0;height:46svh;min-height:300px;max-height:480px;z-index:2;background:#0b1f1f;overflow:hidden;box-shadow:0 12px 40px #0009}
-.stage canvas{display:block;width:100%;height:100%}
-.hint{position:absolute;left:0;right:0;bottom:10px;text-align:center;font:12px/1 Galmuri11,monospace;letter-spacing:1px;color:#cfe6de;opacity:.9;pointer-events:none;transition:opacity .4s}
+.world{position:relative;min-height:100svh}
+.world canvas{position:sticky;top:0;display:block;width:100%;height:100svh;z-index:0}
+.px{font-family:Galmuri11,monospace;letter-spacing:1px}
+
+/* 첫 화면: 링크 목록 */
+.hero{position:absolute;left:0;right:0;top:0;z-index:2;display:flex;justify-content:center;padding:max(28px,env(safe-area-inset-top)) 20px 20px}
+.hero .card{width:100%;max-width:420px;background:var(--card);border:2px solid var(--line);box-shadow:4px 4px 0 #04100f;padding:26px 20px 18px;backdrop-filter:blur(2px)}
+.hero .who{text-align:center}
+.hero .who img{width:84px;height:84px;border-radius:50%;object-fit:cover;border:3px solid var(--accent);image-rendering:auto}
+.hero .who b{display:block;font-size:22px;margin-top:12px;letter-spacing:-.01em}
+.hero .who .tag{display:block;color:var(--muted);font-size:14px;margin-top:6px;line-height:1.5}
+.hero .who .handle{display:block;font:11px Galmuri11,monospace;color:var(--accent);letter-spacing:1px;margin-top:8px}
+.links{display:flex;flex-direction:column;gap:10px;margin-top:22px}
+.links a{display:flex;align-items:center;justify-content:space-between;gap:10px;text-decoration:none;font-weight:700;font-size:15px;padding:14px 16px;background:#153733;border:1px solid #2a5852;color:#fff;transition:transform .08s}
+.links a:active{transform:translate(2px,2px)}
+.links a small{font-weight:500;font-size:12px;color:var(--muted);margin-left:8px}
+.links a.blue{background:var(--blue);border-color:#6f9cf3}
+.links a.blue small{color:#e4ecff}
+.links a.insta{background:linear-gradient(120deg,#f0645f,#c73b8f,#6a45c6);border-color:transparent}
+.links a.insta small{color:#ffe6f2}
+.links a span:last-child{opacity:.7}
+.hint{position:absolute;left:0;right:0;z-index:2;text-align:center;font:12px/1.4 Galmuri11,monospace;letter-spacing:1px;color:#cfe6de;pointer-events:none;transition:opacity .4s}
 .hint.off{opacity:0}
-.page{position:relative;z-index:1;max-width:560px;margin:0 auto;padding:0 20px 60px}
-section{padding:56px 0 24px}
-.eyebrow{font:12px/1.4 Galmuri11,monospace;letter-spacing:1px;color:var(--accent);margin:0 0 14px}
-h1{font-size:clamp(34px,9vw,44px);line-height:1.15;letter-spacing:-.02em;margin:0 0 14px;font-weight:800}
-h2{font-size:26px;line-height:1.25;letter-spacing:-.02em;margin:0 0 4px;font-weight:800}
-.sub{color:var(--muted);font-size:15px;line-height:1.7;margin:0}
-.hero{padding-top:38px}
-.hero .who{display:flex;align-items:center;gap:14px;margin-bottom:22px}
-.hero .who img{width:56px;height:56px;border-radius:50%;object-fit:cover;filter:grayscale(1) contrast(1.05);border:2px solid var(--line)}
-.hero .who b{display:block;font-size:17px}
-.hero .who span{display:block;color:var(--muted);font-size:13px;margin-top:2px}
-.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
-.chips a{text-decoration:none;font-size:13px;padding:9px 13px;border:1px solid var(--line);border-radius:999px;color:var(--ink);background:var(--card)}
-.card{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;margin-top:18px}
-.card img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;background:#0a1c1b}
-.card .body{padding:18px 18px 20px}
-.btn{display:flex;align-items:center;justify-content:space-between;text-decoration:none;font-weight:700;font-size:15px;padding:14px 16px;border-radius:12px;background:#183d38;color:#fff;border:1px solid #235650}
-.btn.blue{background:var(--blue);border-color:var(--blue)}
-.btn.insta{background:linear-gradient(120deg,#f0645f,#c73b8f,#6a45c6);border-color:transparent}
-.btn small{font-weight:500;opacity:.8;font-size:13px;margin-left:8px}
-.noimg{aspect-ratio:4/3;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#0a1c1b;color:#7fd3c1;font:20px/1.3 Galmuri11,monospace;letter-spacing:2px}
-.noimg small{font-size:11px;color:var(--muted);margin-top:8px;letter-spacing:3px}
-footer{padding:36px 0 0;color:var(--muted);font-size:12px;line-height:1.8;text-align:center}
-footer .me{font:13px Galmuri11,monospace;color:var(--accent);letter-spacing:1px}
-@media(min-width:700px){.stage{height:52vh;max-height:560px}section{padding-top:80px}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+/* 거리의 가게 표지판 */
+.stop{position:absolute;z-index:2;width:min(70vw,300px);background:var(--card);border:2px solid var(--line);box-shadow:4px 4px 0 #04100f;padding:12px 14px 12px;transition:border-color .25s,box-shadow .25s}
+.stop.on{border-color:var(--accent);box-shadow:4px 4px 0 #04100f,0 0 0 4px rgba(127,211,193,.12)}
+.stop.l{left:12px}.stop.r{right:12px}
+.stop .eyebrow{font:10px/1 Galmuri7,monospace;letter-spacing:1px;color:var(--accent);margin:0 0 8px}
+.stop h2{font-size:17px;line-height:1.25;letter-spacing:-.01em;margin:0}
+.stop .sub{color:var(--muted);font-size:13px;line-height:1.5;margin:4px 0 0}
+.stop .btn{display:flex;align-items:center;justify-content:space-between;text-decoration:none;font-weight:700;font-size:13px;padding:10px 12px;margin-top:12px;background:#153733;color:#fff;border:1px solid #2a5852}
+.stop .btn.blue{background:var(--blue);border-color:#6f9cf3}
+.stop .btn.insta{background:linear-gradient(120deg,#f0645f,#c73b8f,#6a45c6);border-color:transparent}
+.stop.end{width:min(80vw,340px);left:50%;transform:translateX(-50%);text-align:center}
+.stop.end .btn{justify-content:center;gap:8px}
+.stop.end footer{margin-top:14px;color:var(--muted);font-size:11px;line-height:1.7}
+.stop.end footer .me{font:12px Galmuri11,monospace;color:var(--accent);letter-spacing:1px}
+@media(min-width:700px){.stop{width:320px}.stop.l{left:calc(50% - 360px)}.stop.r{right:calc(50% - 360px)}}
+@media(prefers-reduced-motion:reduce){.links a{transition:none}}
 </style>
 </head>
 <body>
-<div class="stage" id="stage"><canvas id="c" aria-label="픽셀 거리를 걷는 강청림 캐릭터" role="img"></canvas><div class="hint" id="hint">아래로 내리면 같이 걸어요</div></div>
+<div class="world" id="world">
+<canvas id="c" aria-label="위에서 내려다본 픽셀 거리를 걷는 강청림 캐릭터" role="img"></canvas>
 
-<main class="page" id="page">
-<section class="hero" id="s-hero">
-  <div class="who"><img src="assets/portrait.jpg" alt=""><div><b>강청림</b><span>외식업 기획. 컨설팅. 앱서비스.</span></div></div>
-  <h1>걸어온 길,<br>만들어 갈 것들.</h1>
-  <p class="sub">가게의 문을 열고, 현장에서 배우고, 필요한 것을 만듭니다.<br>스크롤을 내리면 제가 걸어온 거리를 함께 걷습니다.</p>
-  <div class="chips"><a href="#s-0">뱃꼬동 해물포차</a><a href="#s-2">뱃꼬동 숙성집</a><a href="#s-4">철계직화장</a><a href="#s-westore">위스토어</a><a href="#s-end">Instagram</a></div>
-</section>
+<div class="hero" id="hero">
+  <div class="card">
+    <div class="who">
+      <img src="assets/portrait.jpg" alt="강청림">
+      <b>강청림</b>
+      <span class="tag">외식업 기획. 컨설팅. 앱서비스.</span>
+      <span class="handle">chungrim.me</span>
+    </div>
+    <nav class="links">
+      <a href="https://naver.me/FBe2jxbP" target="_blank" rel="noopener"><span>뱃꼬동 해물포차<small>구월점</small></span><span>→</span></a>
+      <a href="https://naver.me/FLEIjH4e" target="_blank" rel="noopener"><span>뱃꼬동 해물포차<small>부평점</small></span><span>→</span></a>
+      <a href="https://naver.me/GJ5AwLhq" target="_blank" rel="noopener"><span>뱃꼬동 숙성집<small>구월점</small></span><span>→</span></a>
+      <a href="https://naver.me/GNJh3uQR" target="_blank" rel="noopener"><span>뱃꼬동 숙성집<small>전주 신시가지점</small></span><span>→</span></a>
+      <a href="https://naver.me/FbVoibsV" target="_blank" rel="noopener"><span>철계직화장<small>구월점</small></span><span>→</span></a>
+      <a class="blue" href="https://westoreapp.com" target="_blank" rel="noopener"><span>위스토어<small>매장 운영 앱</small></span><span>→</span></a>
+      <a class="insta" href="https://instagram.com/cxnrim" target="_blank" rel="noopener"><span>Instagram<small>@cxnrim</small></span><span>→</span></a>
+    </nav>
+  </div>
+</div>
+<div class="hint" id="hint">아래로 내리면 거리로 내려갑니다</div>
 
-<section id="s-0" data-stop><p class="eyebrow">01 뱃꼬동</p><h2>뱃꼬동 해물포차</h2><p class="sub">구월점</p>
-<div class="card"><img src="assets/sea.jpg" alt="뱃꼬동 해물포차 구월점" loading="lazy"><div class="body"><a class="btn" href="https://naver.me/FBe2jxbP" target="_blank" rel="noopener">네이버 플레이스에서 보기<span>→</span></a></div></div></section>
-
-<section id="s-1" data-stop><p class="eyebrow">02 뱃꼬동</p><h2>뱃꼬동 해물포차</h2><p class="sub">부평점</p>
-<div class="card"><img src="assets/bupyeong.jpg" alt="뱃꼬동 해물포차 부평점" loading="lazy"><div class="body"><a class="btn" href="https://naver.me/FLEIjH4e" target="_blank" rel="noopener">네이버 플레이스에서 보기<span>→</span></a></div></div></section>
-
-<section id="s-2" data-stop><p class="eyebrow">03 뱃꼬동</p><h2>뱃꼬동 숙성집</h2><p class="sub">구월점</p>
-<div class="card"><img src="assets/shop.jpg" alt="뱃꼬동 숙성집 구월점" loading="lazy"><div class="body"><a class="btn" href="https://naver.me/GJ5AwLhq" target="_blank" rel="noopener">네이버 플레이스에서 보기<span>→</span></a></div></div></section>
-
-<section id="s-3" data-stop><p class="eyebrow">04 뱃꼬동</p><h2>뱃꼬동 숙성집</h2><p class="sub">전주 신시가지점</p>
-<div class="card"><div class="noimg">뱃꼬동 숙성집<small>JEONJU</small></div><div class="body"><a class="btn" href="https://naver.me/GNJh3uQR" target="_blank" rel="noopener">네이버 플레이스에서 보기<span>→</span></a></div></div></section>
-
-<section id="s-4" data-stop><p class="eyebrow">05 철계</p><h2>철계직화장</h2><p class="sub">구월점</p>
-<div class="card"><img src="assets/chicken.jpg" alt="철계직화장 구월점" loading="lazy"><div class="body"><a class="btn" href="https://naver.me/FbVoibsV" target="_blank" rel="noopener">네이버 플레이스에서 보기<span>→</span></a></div></div></section>
-
-<section id="s-westore" data-stop><p class="eyebrow">거리 끝, 작업실</p><h2>현장에서 만든 도구,<br>위스토어</h2><p class="sub">사장님과 직원이 함께 운영하는 매장 운영 시스템.<br>매장을 하면서 필요했던 것을 직접 만들었습니다.</p>
-<div class="card"><div class="body"><a class="btn blue" href="https://westoreapp.com" target="_blank" rel="noopener">westoreapp.com<span>→</span></a></div></div></section>
-
-<section id="s-end" data-stop><p class="eyebrow">다음 걸음</p><h2>같이 걸어요.</h2><p class="sub">새 가게, 새 브랜드, 새 서비스. 하는 일은 인스타에 올립니다.</p>
-<div class="card"><div class="body"><a class="btn insta" href="https://instagram.com/cxnrim" target="_blank" rel="noopener">Instagram <small>@cxnrim</small><span>→</span></a></div></div>
-<footer><div class="me">chungrim.me</div>강청림 / 외식업 기획. 컨설팅. 앱서비스.</footer></section>
-</main>
+<div class="stop l" data-stop="0"><p class="eyebrow">01 뱃꼬동</p><h2>뱃꼬동 해물포차</h2><p class="sub">구월점</p><a class="btn" href="https://naver.me/FBe2jxbP" target="_blank" rel="noopener">네이버 플레이스<span>→</span></a></div>
+<div class="stop r" data-stop="1"><p class="eyebrow">02 뱃꼬동</p><h2>뱃꼬동 해물포차</h2><p class="sub">부평점</p><a class="btn" href="https://naver.me/FLEIjH4e" target="_blank" rel="noopener">네이버 플레이스<span>→</span></a></div>
+<div class="stop l" data-stop="2"><p class="eyebrow">03 뱃꼬동</p><h2>뱃꼬동 숙성집</h2><p class="sub">구월점</p><a class="btn" href="https://naver.me/GJ5AwLhq" target="_blank" rel="noopener">네이버 플레이스<span>→</span></a></div>
+<div class="stop r" data-stop="3"><p class="eyebrow">04 뱃꼬동</p><h2>뱃꼬동 숙성집</h2><p class="sub">전주 신시가지점</p><a class="btn" href="https://naver.me/GNJh3uQR" target="_blank" rel="noopener">네이버 플레이스<span>→</span></a></div>
+<div class="stop l" data-stop="4"><p class="eyebrow">05 철계</p><h2>철계직화장</h2><p class="sub">구월점</p><a class="btn" href="https://naver.me/FbVoibsV" target="_blank" rel="noopener">네이버 플레이스<span>→</span></a></div>
+<div class="stop r" data-stop="5"><p class="eyebrow">거리 끝, 작업실</p><h2>위스토어</h2><p class="sub">사장님과 직원이 함께 운영하는 매장 운영 앱. 매장을 하면서 필요했던 것을 직접 만들었습니다.</p><a class="btn blue" href="https://westoreapp.com" target="_blank" rel="noopener">westoreapp.com<span>→</span></a></div>
+<div class="stop end" data-stop="6"><p class="eyebrow">다음 걸음</p><h2>같이 걸어요.</h2><p class="sub">새 가게, 새 브랜드, 새 서비스. 하는 일은 인스타에 올립니다.</p><a class="btn insta" href="https://instagram.com/cxnrim" target="_blank" rel="noopener">Instagram <small>@cxnrim</small><span>→</span></a><footer><div class="me">chungrim.me</div>강청림 / 외식업 기획. 컨설팅. 앱서비스.</footer></div>
+</div>
 <script src="street.js"></script>
 </body>
 </html>

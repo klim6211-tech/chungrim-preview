@@ -49,7 +49,7 @@ a{color:inherit;text-decoration:none}
 @keyframes pulse{0%,100%{box-shadow:0 0 0 4px rgba(159,227,201,.15)}50%{box-shadow:0 0 0 9px rgba(159,227,201,0)}}
 
 /* ===== LOGO MARQUEE ===== */
-.tick{overflow:hidden;padding:16px 0;white-space:nowrap;background:#f2f1ec}
+.tick{overflow:hidden;padding:16px 0;white-space:nowrap;background:#0d1210;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .tick div{display:inline-flex;align-items:center;animation:tick 16s linear infinite;height:56px}
 .tick img{display:inline-block;margin:0 26px}
 .tick img[data-h="24"]{height:24px}.tick img[data-h="30"]{height:30px}.tick img[data-h="38"]{height:38px}.tick img[data-h="52"]{height:52px}
@@ -60,21 +60,20 @@ a{color:inherit;text-decoration:none}
 .idx .lab{display:flex;justify-content:space-between;align-items:baseline;margin:0 0 18px}
 .idx .lab h2{margin:0;font-size:13px;font-weight:600;letter-spacing:-.01em;color:var(--ink2)}
 
-/* 위스토어 hero card */
-.ws{position:relative;display:block;overflow:hidden;border-radius:22px;padding:24px 22px 22px;min-height:196px;color:#fff;
-  background:radial-gradient(120% 90% at 100% 0%,#7aa4ff 0%,var(--blue) 42%,#2a54c4 100%);
-  box-shadow:0 30px 60px -30px rgba(91,141,239,.75),inset 0 1px 0 rgba(255,255,255,.35);
-  transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
-.ws:active{transform:scale(.985)}
-.ws::before{content:"";position:absolute;inset:0;background:
-  repeating-linear-gradient(90deg,rgba(255,255,255,.06) 0 1px,transparent 1px 44px),
-  repeating-linear-gradient(0deg,rgba(255,255,255,.06) 0 1px,transparent 1px 44px);mask:linear-gradient(180deg,rgba(0,0,0,.6),transparent 75%)}
-.ws .k{position:relative;display:flex;justify-content:space-between;align-items:center}
-.ws .k .mono{color:rgba(255,255,255,.75)}
-.ws .k .w{width:38px;height:38px;border-radius:12px;background:#fff;color:var(--blue2);display:grid;place-items:center;font-weight:900;font-size:18px;letter-spacing:-.05em}
-.ws h3{position:relative;margin:34px 0 0;font-size:40px;font-weight:800;letter-spacing:-.04em;line-height:1}
-.ws p{position:relative;margin:10px 0 0;font-size:15px;line-height:1.45;color:rgba(255,255,255,.88);letter-spacing:-.01em;word-break:keep-all}
-.ws .go{position:relative;margin-top:18px;display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.35);padding:9px 14px;border-radius:999px;backdrop-filter:blur(6px)}
+/* 위스토어 card */
+.ws{position:relative;display:grid;grid-template-columns:52px 1fr;gap:16px;align-items:start;overflow:hidden;border-radius:18px;padding:20px 18px;
+  background:linear-gradient(180deg,rgba(242,241,236,.045),rgba(242,241,236,.015));border:1px solid var(--line2);
+  transition:border-color .3s var(--ease),transform .3s var(--ease)}
+.ws::before{content:"";position:absolute;right:-60px;top:-80px;width:220px;height:220px;border-radius:50%;background:radial-gradient(closest-side,rgba(91,141,239,.22),transparent);pointer-events:none}
+.ws:active{transform:scale(.99)}
+@media(hover:hover){.ws:hover{border-color:rgba(91,141,239,.55)}}
+.ws .mk{width:52px;height:52px;border-radius:14px;background:#0d1210;border:1px solid var(--line);display:grid;place-items:center}
+.ws .mk img{width:30px;height:auto}
+.ws .tx{position:relative;min-width:0}
+.ws h3{margin:2px 0 0;font-size:20px;font-weight:700;letter-spacing:-.025em;line-height:1.2;display:flex;align-items:center;gap:8px}
+.ws h3 .mono{font-size:10px;color:#8fb0f5;border:1px solid rgba(91,141,239,.4);padding:2px 6px;border-radius:6px;letter-spacing:.1em}
+.ws p{margin:8px 0 0;font-size:14.5px;line-height:1.55;color:var(--ink2);letter-spacing:-.01em;word-break:keep-all}
+.ws .go{margin-top:12px;display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:#8fb0f5}
 .ws .go i{font-style:normal;transition:transform .3s var(--ease)}
 .ws:hover .go i{transform:translateX(3px)}
 
@@ -174,8 +173,8 @@ footer b{font-family:var(--mono);font-weight:500;letter-spacing:.14em;color:var(
 </header>
 
 <div class="tick" aria-hidden="true"><div>
-  <img src="assets/logos/westore.png" data-h="24" alt=""><img src="assets/logos/baetkkodong.png" data-h="52" alt=""><img src="assets/logos/cheolgye.png" data-h="30" alt=""><img src="assets/logos/sukseongjip.png" data-h="52" alt=""><img src="assets/logos/jamp.png" data-h="38" alt=""><img src="assets/logos/hanyang.png" data-h="30" alt="">
-  <img src="assets/logos/westore.png" data-h="24" alt=""><img src="assets/logos/baetkkodong.png" data-h="52" alt=""><img src="assets/logos/cheolgye.png" data-h="30" alt=""><img src="assets/logos/sukseongjip.png" data-h="52" alt=""><img src="assets/logos/jamp.png" data-h="38" alt=""><img src="assets/logos/hanyang.png" data-h="30" alt="">
+  <img src="assets/logos/d-westore.png" data-h="24" alt=""><img src="assets/logos/d-baetkkodong.png" data-h="52" alt=""><img src="assets/logos/d-cheolgye.png" data-h="30" alt=""><img src="assets/logos/d-sukseongjip.png" data-h="52" alt=""><img src="assets/logos/d-jamp.png" data-h="38" alt=""><img src="assets/logos/d-hanyang.png" data-h="30" alt="">
+  <img src="assets/logos/d-westore.png" data-h="24" alt=""><img src="assets/logos/d-baetkkodong.png" data-h="52" alt=""><img src="assets/logos/d-cheolgye.png" data-h="30" alt=""><img src="assets/logos/d-sukseongjip.png" data-h="52" alt=""><img src="assets/logos/d-jamp.png" data-h="38" alt=""><img src="assets/logos/d-hanyang.png" data-h="30" alt="">
 </div></div>
 
 <main class="wrap">
@@ -183,10 +182,12 @@ footer b{font-family:var(--mono);font-weight:500;letter-spacing:.14em;color:var(
 <section class="idx" aria-label="링크">
   <div class="lab"><h2>만드는 것</h2><span class="mono">01</span></div>
   <a class="ws" href="https://westoreapp.com" target="_blank" rel="noopener">
-    <div class="k"><span class="mono">App</span><span class="w">W</span></div>
-    <h3>위스토어</h3>
-    <p>사장님과 직원이 따로 일하지 않고, 함께 매장을 만들어가게 하는 앱. 제 가게에서 먼저 씁니다.</p>
-    <span class="go">westoreapp.com <i>→</i></span>
+    <span class="mk"><img src="assets/logos/westore-mark.png" alt=""></span>
+    <div class="tx">
+      <h3>위스토어 <span class="mono">App</span></h3>
+      <p>사장님과 직원이 따로 일하지 않고, 함께 매장을 만들어가게 하는 앱. 제 가게에서 먼저 씁니다.</p>
+      <span class="go">westoreapp.com <i>→</i></span>
+    </div>
   </a>
 
   <div class="lab" style="margin-top:44px"><h2>운영하는 매장</h2><span class="mono">02</span></div>

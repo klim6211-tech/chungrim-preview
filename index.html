@@ -28,30 +28,29 @@ a{color:inherit;text-decoration:none}
 .wrap{position:relative;z-index:1;max-width:560px;margin:0 auto;padding:0 22px}
 
 /* ===== HERO ===== */
-.hero{position:relative;min-height:72svh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;
-  padding:calc(env(safe-area-inset-top) + 18px) 22px 34px}
+.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;
+  padding:calc(env(safe-area-inset-top) + 18px) 22px 44px}
 .hero .ph{position:absolute;inset:0;z-index:0}
-.hero .ph img{width:100%;height:100%;object-fit:cover;object-position:62% 22%;filter:grayscale(1) contrast(1.05) brightness(.5);transform:scale(1.04);will-change:transform}
+.hero .ph img{width:100%;height:100%;object-fit:cover;object-position:60% 18%;filter:grayscale(1) contrast(1.12) brightness(.82);transform:scale(1.04);will-change:transform}
 .hero .ph::after{content:"";position:absolute;inset:0;
   background:
-   linear-gradient(180deg,rgba(7,9,8,.35) 0%,rgba(7,9,8,.15) 25%,rgba(7,9,8,.7) 55%,var(--bg) 88%),
-   linear-gradient(90deg,rgba(31,94,79,.3),rgba(7,9,8,0) 60%)}
+   linear-gradient(180deg,rgba(7,9,8,.15) 0%,rgba(7,9,8,0) 30%,rgba(7,9,8,.55) 60%,var(--bg) 92%),
+   linear-gradient(90deg,rgba(31,94,79,.28),rgba(7,9,8,0) 60%)}
 .hero .top{position:absolute;left:22px;right:22px;top:calc(env(safe-area-inset-top) + 18px);display:flex;justify-content:space-between;z-index:2}
 .hero .top .mono{color:var(--ink2)}
 .hero .body{position:relative;z-index:2;max-width:560px;margin:0 auto;width:100%}
-.hero h1{margin:0;font-size:clamp(44px,12vw,64px);line-height:1;font-weight:800;letter-spacing:-.04em}
-.hero h1 small{display:block;font-size:13px;letter-spacing:.04em;font-weight:500;color:var(--ink2);margin-bottom:12px}
-.hero .tag{margin:14px 0 0;display:flex;flex-wrap:wrap;align-items:baseline;font-size:clamp(16px,4.4vw,19px);font-weight:500;letter-spacing:-.01em;color:var(--ink2)}
+.hero h1{margin:0;font-size:clamp(64px,19vw,112px);line-height:.92;font-weight:800;letter-spacing:-.05em}
+.hero h1 small{display:block;font-size:clamp(14px,3.6vw,18px);letter-spacing:.02em;font-weight:500;color:var(--ink2);margin-bottom:14px}
+.hero .tag{margin:22px 0 0;display:flex;flex-wrap:wrap;align-items:baseline;font-size:clamp(20px,5.4vw,26px);font-weight:600;letter-spacing:-.02em;line-height:1.2}
 .hero .tag i{font-style:normal;color:var(--mint);margin:0 10px;opacity:.7}
 .hero .cue{margin-top:30px;display:flex;align-items:center;gap:10px;color:var(--mute);font-size:12px;letter-spacing:.02em}
 .hero .cue b{width:8px;height:8px;border-radius:50%;background:var(--mint);box-shadow:0 0 0 4px rgba(159,227,201,.15);animation:pulse 2.2s infinite}
 @keyframes pulse{0%,100%{box-shadow:0 0 0 4px rgba(159,227,201,.15)}50%{box-shadow:0 0 0 9px rgba(159,227,201,0)}}
 
 /* ===== LOGO MARQUEE ===== */
-.tick{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:14px 0;white-space:nowrap;background:var(--bg);
-  mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
-.tick div{display:inline-flex;align-items:center;animation:tick 40s linear infinite;height:56px}
-.tick img{display:inline-block;margin:0 24px;opacity:.82;filter:drop-shadow(0 0 0 transparent)}
+.tick{overflow:hidden;padding:16px 0;white-space:nowrap;background:#f2f1ec}
+.tick div{display:inline-flex;align-items:center;animation:tick 16s linear infinite;height:56px}
+.tick img{display:inline-block;margin:0 26px}
 .tick img[data-h="24"]{height:24px}.tick img[data-h="30"]{height:30px}.tick img[data-h="38"]{height:38px}.tick img[data-h="52"]{height:52px}
 @keyframes tick{to{transform:translateX(-50%)}}
 
@@ -165,7 +164,6 @@ footer b{font-family:var(--mono);font-weight:500;letter-spacing:.14em;color:var(
   <div class="body">
     <h1><small>Kang Chungrim</small>강청림</h1>
     <p class="tag">외식업 기획<i>/</i>컨설팅<i>/</i>앱서비스</p>
-    <div class="cue"><b></b>아래로</div>
   </div>
 </header>
 
@@ -204,7 +202,7 @@ footer b{font-family:var(--mono);font-weight:500;letter-spacing:.14em;color:var(
   <div class="intro">
     <span class="mono">03 / Q&amp;A</span>
     <h2>다들 이걸 물어봅니다.</h2>
-    <p>가게에서, DM에서, 술자리에서 자주 받은 질문에 미리 답해 뒀습니다. 아래로 내리면 대화가 이어집니다.</p>
+    <p>가게에서, DM에서, 술자리에서 자주 받은 질문에 미리 답해 뒀습니다.</p>
   </div>
 
   <div class="chat">

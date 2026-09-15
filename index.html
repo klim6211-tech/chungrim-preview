@@ -28,31 +28,31 @@ a{color:inherit;text-decoration:none}
 .wrap{position:relative;z-index:1;max-width:560px;margin:0 auto;padding:0 22px}
 
 /* ===== HERO ===== */
-.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;
-  padding:calc(env(safe-area-inset-top) + 18px) 22px 30px}
+.hero{position:relative;min-height:72svh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;
+  padding:calc(env(safe-area-inset-top) + 18px) 22px 34px}
 .hero .ph{position:absolute;inset:0;z-index:0}
-.hero .ph img{width:100%;height:100%;object-fit:cover;object-position:60% 18%;filter:grayscale(1) contrast(1.12) brightness(.82);transform:scale(1.04);will-change:transform}
+.hero .ph img{width:100%;height:100%;object-fit:cover;object-position:62% 22%;filter:grayscale(1) contrast(1.05) brightness(.5);transform:scale(1.04);will-change:transform}
 .hero .ph::after{content:"";position:absolute;inset:0;
   background:
-   linear-gradient(180deg,rgba(7,9,8,.15) 0%,rgba(7,9,8,0) 30%,rgba(7,9,8,.55) 60%,var(--bg) 92%),
-   linear-gradient(90deg,rgba(31,94,79,.28),rgba(7,9,8,0) 60%)}
+   linear-gradient(180deg,rgba(7,9,8,.35) 0%,rgba(7,9,8,.15) 25%,rgba(7,9,8,.7) 55%,var(--bg) 88%),
+   linear-gradient(90deg,rgba(31,94,79,.3),rgba(7,9,8,0) 60%)}
 .hero .top{position:absolute;left:22px;right:22px;top:calc(env(safe-area-inset-top) + 18px);display:flex;justify-content:space-between;z-index:2}
 .hero .top .mono{color:var(--ink2)}
 .hero .body{position:relative;z-index:2;max-width:560px;margin:0 auto;width:100%}
-.hero h1{margin:0;font-size:clamp(64px,19vw,112px);line-height:.92;font-weight:800;letter-spacing:-.05em}
-.hero h1 small{display:block;font-size:clamp(14px,3.6vw,18px);letter-spacing:.02em;font-weight:500;color:var(--ink2);margin-bottom:14px}
-.hero .tag{margin:22px 0 0;display:grid;gap:4px;font-size:clamp(20px,5.4vw,26px);font-weight:600;letter-spacing:-.02em;line-height:1.2}
-.hero .tag span{display:flex;align-items:baseline;gap:12px}
-.hero .tag i{font-style:normal;font-family:var(--mono);font-size:11px;color:var(--mint);letter-spacing:.1em;width:22px}
-.hero .cue{margin-top:34px;display:flex;align-items:center;gap:10px;color:var(--mute);font-size:12px;letter-spacing:.02em}
+.hero h1{margin:0;font-size:clamp(44px,12vw,64px);line-height:1;font-weight:800;letter-spacing:-.04em}
+.hero h1 small{display:block;font-size:13px;letter-spacing:.04em;font-weight:500;color:var(--ink2);margin-bottom:12px}
+.hero .tag{margin:14px 0 0;display:flex;flex-wrap:wrap;align-items:baseline;font-size:clamp(16px,4.4vw,19px);font-weight:500;letter-spacing:-.01em;color:var(--ink2)}
+.hero .tag i{font-style:normal;color:var(--mint);margin:0 10px;opacity:.7}
+.hero .cue{margin-top:30px;display:flex;align-items:center;gap:10px;color:var(--mute);font-size:12px;letter-spacing:.02em}
 .hero .cue b{width:8px;height:8px;border-radius:50%;background:var(--mint);box-shadow:0 0 0 4px rgba(159,227,201,.15);animation:pulse 2.2s infinite}
 @keyframes pulse{0%,100%{box-shadow:0 0 0 4px rgba(159,227,201,.15)}50%{box-shadow:0 0 0 9px rgba(159,227,201,0)}}
 
-/* ===== MARQUEE ===== */
-.tick{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:12px 0;white-space:nowrap;background:var(--bg)}
-.tick div{display:inline-block;animation:tick 34s linear infinite;font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--mute);text-transform:uppercase}
-.tick span{margin:0 26px}
-.tick em{font-style:normal;color:var(--mint)}
+/* ===== LOGO MARQUEE ===== */
+.tick{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:14px 0;white-space:nowrap;background:var(--bg);
+  mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.tick div{display:inline-flex;align-items:center;animation:tick 40s linear infinite;height:56px}
+.tick img{display:inline-block;margin:0 24px;opacity:.82;filter:drop-shadow(0 0 0 transparent)}
+.tick img[data-h="24"]{height:24px}.tick img[data-h="30"]{height:30px}.tick img[data-h="38"]{height:38px}.tick img[data-h="52"]{height:52px}
 @keyframes tick{to{transform:translateX(-50%)}}
 
 /* ===== INDEX (links) ===== */
@@ -163,19 +163,15 @@ footer b{font-family:var(--mono);font-weight:500;letter-spacing:.14em;color:var(
   <div class="ph"><img src="assets/portrait.jpg" alt="" id="hero-img"></div>
   <div class="top"><span class="mono">chungrim.me</span><span class="mono">Incheon, KR</span></div>
   <div class="body">
-    <h1><small>강청림 / Kang Chungrim</small>강청림</h1>
-    <div class="tag">
-      <span><i>01</i>외식업 기획.</span>
-      <span><i>02</i>컨설팅.</span>
-      <span><i>03</i>앱서비스.</span>
-    </div>
-    <div class="cue"><b></b>가게 다섯 곳, 앱 하나, 그리고 질문들</div>
+    <h1><small>Kang Chungrim</small>강청림</h1>
+    <p class="tag">외식업 기획<i>/</i>컨설팅<i>/</i>앱서비스</p>
+    <div class="cue"><b></b>아래로</div>
   </div>
 </header>
 
 <div class="tick" aria-hidden="true"><div>
-  <span>뱃꼬동 해물포차</span><span>뱃꼬동 숙성집</span><span>철계직화장</span><span><em>WeStore</em></span><span>@cxnrim</span>
-  <span>뱃꼬동 해물포차</span><span>뱃꼬동 숙성집</span><span>철계직화장</span><span><em>WeStore</em></span><span>@cxnrim</span>
+  <img src="assets/logos/westore.png" data-h="24" alt=""><img src="assets/logos/baetkkodong.png" data-h="52" alt=""><img src="assets/logos/cheolgye.png" data-h="30" alt=""><img src="assets/logos/sukseongjip.png" data-h="52" alt=""><img src="assets/logos/jamp.png" data-h="38" alt=""><img src="assets/logos/hanyang.png" data-h="30" alt="">
+  <img src="assets/logos/westore.png" data-h="24" alt=""><img src="assets/logos/baetkkodong.png" data-h="52" alt=""><img src="assets/logos/cheolgye.png" data-h="30" alt=""><img src="assets/logos/sukseongjip.png" data-h="52" alt=""><img src="assets/logos/jamp.png" data-h="38" alt=""><img src="assets/logos/hanyang.png" data-h="30" alt="">
 </div></div>
 
 <main class="wrap">
@@ -214,7 +210,7 @@ footer b{font-family:var(--mono);font-weight:500;letter-spacing:.14em;color:var(
   <div class="chat">
     <div class="head">
       <img src="assets/drawing.jpg" alt="">
-      <div><b>강청림</b><small><i></i>보통 새벽에 답합니다</small></div>
+      <div><b>강청림</b></div>
       <span class="r">Q&amp;A</span>
     </div>
 
@@ -223,8 +219,8 @@ footer b{font-family:var(--mono);font-weight:500;letter-spacing:.14em;color:var(
       <div class="msg q"><div class="bub">뱃꼬동, 이름이 왜 뱃꼬동이에요?</div></div>
       <div class="msg a"><div class="bub draft">이름의 뜻과 지은 사연. 청림님 답변 자리.</div><img class="av" src="assets/drawing.jpg" alt=""></div>
 
-      <div class="msg q"><div class="bub">첫 가게는 몇 살에, 돈은 어떻게 마련해서 열었어요?</div></div>
-      <div class="msg a"><div class="bub draft">나이, 자본, 첫 가게 위치와 크기. 청림님 답변 자리.</div><img class="av" src="assets/drawing.jpg" alt=""></div>
+      <div class="msg q"><div class="bub">첫 가게는 몇 살에 열었어요?</div></div>
+      <div class="msg a"><div class="bub draft">나이, 첫 가게 위치와 크기. 청림님 답변 자리.</div><img class="av" src="assets/drawing.jpg" alt=""></div>
 
       <div class="msg q"><div class="bub">망할 뻔한 적 있어요?</div></div>
       <div class="msg a"><div class="bub draft">제일 힘들었던 시기와 그때 무엇을 바꿨는지. 청림님 답변 자리.</div><img class="av" src="assets/drawing.jpg" alt=""></div>
@@ -236,11 +232,11 @@ footer b{font-family:var(--mono);font-weight:500;letter-spacing:.14em;color:var(
       <div class="msg q"><div class="bub">해물포차, 숙성집, 철계직화장. 왜 하나로 안 하고 세 개나 해요?</div></div>
       <div class="msg a"><div class="bub draft">브랜드를 나눈 이유와 각각의 역할. 청림님 답변 자리.</div><img class="av" src="assets/drawing.jpg" alt=""></div>
 
-      <div class="msg q"><div class="bub">메뉴 가격은 어떻게 정해요? 그냥 원가 곱하기예요?</div></div>
+      <div class="msg q"><div class="bub">메뉴 가격은 어떤 기준으로 정해요?</div></div>
       <div class="msg a"><div class="bub draft">가격을 정하는 기준과 원칙. 청림님 답변 자리.</div><img class="av" src="assets/drawing.jpg" alt=""></div>
 
       <div class="ch"><span>사람과 운영</span></div>
-      <div class="msg q"><div class="bub">가게가 다섯 개면 사장이 매일 어디에 있어요?</div></div>
+      <div class="msg q"><div class="bub">가게가 여러 개면 사장이 매일 어디에 있어요?</div></div>
       <div class="msg a"><div class="bub draft">하루 일과, 점장과 동업자와 역할을 어떻게 나누는지. 청림님 답변 자리.</div><img class="av" src="assets/drawing.jpg" alt=""></div>
 
       <div class="msg q"><div class="bub">직원한테 제일 자주 하는 말이 뭐예요?</div></div>
@@ -252,9 +248,6 @@ footer b{font-family:var(--mono);font-weight:500;letter-spacing:.14em;color:var(
       <div class="ch"><span>위스토어</span></div>
       <div class="msg q"><div class="bub">가게 하면서 앱까지 만드는 이유가 뭐예요?</div></div>
       <div class="msg a"><div class="bub draft">매장에서 겪은 불편, 있는 앱들이 안 맞았던 이유. 청림님 답변 자리.</div><img class="av" src="assets/drawing.jpg" alt=""></div>
-
-      <div class="msg q"><div class="bub">개발 못 하잖아요. 어떻게 만들어요?</div></div>
-      <div class="msg a"><div class="bub draft">AI와 함께 만드는 방식, 직접 하는 범위. 청림님 답변 자리.</div><img class="av" src="assets/drawing.jpg" alt=""></div>
 
       <div class="msg q"><div class="bub">컨설팅은 어떤 사람한테, 뭘 해줘요?</div></div>
       <div class="msg a"><div class="bub draft">대상, 범위, 안 하는 것. 청림님 답변 자리.</div><img class="av" src="assets/drawing.jpg" alt=""></div>

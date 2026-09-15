@@ -4,167 +4,295 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>강청림 chungrim.me</title>
-<meta name="description" content="외식업 기획. 컨설팅. 앱서비스. 강청림이 하는 일과 생각.">
-<meta name="theme-color" content="#0b1a18">
+<meta name="description" content="외식업 기획. 컨설팅. 앱서비스. 가게를 직접 운영하며 브랜드를 만들고 앱을 만드는 사람.">
+<meta name="theme-color" content="#070908">
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <style>
 :root{
-  --bg:#0b1a18;--bg2:#0f2622;
-  --ink:#eaf2ee;--ink2:#b9cbc4;--muted:#7f9a92;
-  --line:rgba(190,225,214,.12);--line2:rgba(190,225,214,.22);
-  --mint:#8fe0cc;--mint2:#3fbfa3;
-  --blue:#5B8DEF;--blue2:#3f6fd6;
-  --steel:linear-gradient(180deg,#1a302c 0%,#142622 100%);
+  --bg:#070908;--bg2:#0d1210;--panel:#111715;
+  --ink:#f2f1ec;--ink2:#b9bcb5;--mute:#6f766f;
+  --line:rgba(242,241,236,.10);--line2:rgba(242,241,236,.2);
+  --green:#1f5e4f;--mint:#9fe3c9;
+  --blue:#5B8DEF;--blue2:#2f63d6;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+  --ease:cubic-bezier(.2,.7,.2,1);
 }
-*{box-sizing:border-box}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html{background:var(--bg);scroll-behavior:smooth}
-body{margin:0;color:var(--ink);font-family:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+body{margin:0;color:var(--ink);font-family:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;font-feature-settings:"ss05","cv11"}
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:9;opacity:.08;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+a{color:inherit;text-decoration:none}
+.mono{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+.wrap{position:relative;z-index:1;max-width:560px;margin:0 auto;padding:0 22px}
+
+/* ===== HERO ===== */
+.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;
+  padding:calc(env(safe-area-inset-top) + 18px) 22px 30px}
+.hero .ph{position:absolute;inset:0;z-index:0}
+.hero .ph img{width:100%;height:100%;object-fit:cover;object-position:60% 18%;filter:grayscale(1) contrast(1.12) brightness(.82);transform:scale(1.04);will-change:transform}
+.hero .ph::after{content:"";position:absolute;inset:0;
   background:
-    radial-gradient(900px 600px at 50% -10%,rgba(63,191,163,.16),transparent 60%),
-    linear-gradient(180deg,#0d211e 0%,var(--bg) 40%,#081312 100%);}
-body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.07;
-  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .5 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");}
-a{color:inherit}
-.wrap{position:relative;z-index:1;max-width:460px;margin:0 auto;padding:0 20px}
+   linear-gradient(180deg,rgba(7,9,8,.15) 0%,rgba(7,9,8,0) 30%,rgba(7,9,8,.55) 60%,var(--bg) 92%),
+   linear-gradient(90deg,rgba(31,94,79,.28),rgba(7,9,8,0) 60%)}
+.hero .top{position:absolute;left:22px;right:22px;top:calc(env(safe-area-inset-top) + 18px);display:flex;justify-content:space-between;z-index:2}
+.hero .top .mono{color:var(--ink2)}
+.hero .body{position:relative;z-index:2;max-width:560px;margin:0 auto;width:100%}
+.hero h1{margin:0;font-size:clamp(64px,19vw,112px);line-height:.92;font-weight:800;letter-spacing:-.05em}
+.hero h1 small{display:block;font-size:clamp(14px,3.6vw,18px);letter-spacing:.02em;font-weight:500;color:var(--ink2);margin-bottom:14px}
+.hero .tag{margin:22px 0 0;display:grid;gap:4px;font-size:clamp(20px,5.4vw,26px);font-weight:600;letter-spacing:-.02em;line-height:1.2}
+.hero .tag span{display:flex;align-items:baseline;gap:12px}
+.hero .tag i{font-style:normal;font-family:var(--mono);font-size:11px;color:var(--mint);letter-spacing:.1em;width:22px}
+.hero .cue{margin-top:34px;display:flex;align-items:center;gap:10px;color:var(--mute);font-size:12px;letter-spacing:.02em}
+.hero .cue b{width:8px;height:8px;border-radius:50%;background:var(--mint);box-shadow:0 0 0 4px rgba(159,227,201,.15);animation:pulse 2.2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 4px rgba(159,227,201,.15)}50%{box-shadow:0 0 0 9px rgba(159,227,201,0)}}
 
-/* 프로필 */
-.me{padding:max(40px,calc(env(safe-area-inset-top) + 28px)) 0 8px;text-align:center}
-.me .pic{width:112px;height:112px;margin:0 auto;border-radius:50%;padding:3px;background:linear-gradient(160deg,var(--mint),rgba(143,224,204,.15) 60%,rgba(143,224,204,.0));
-  box-shadow:0 18px 40px -18px rgba(63,191,163,.55)}
-.me .pic img{display:block;width:100%;height:100%;border-radius:50%;object-fit:cover;object-position:50% 20%;filter:grayscale(1) contrast(1.05);border:2px solid var(--bg)}
-.me h1{font-size:26px;font-weight:800;letter-spacing:-.02em;margin:18px 0 0}
-.me .tag{margin:8px 0 0;font-size:15px;color:var(--ink2);letter-spacing:-.01em}
-.me .site{display:inline-block;margin-top:12px;font-size:12px;font-weight:600;letter-spacing:.12em;color:var(--mint);text-transform:uppercase}
+/* ===== MARQUEE ===== */
+.tick{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:12px 0;white-space:nowrap;background:var(--bg)}
+.tick div{display:inline-block;animation:tick 34s linear infinite;font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--mute);text-transform:uppercase}
+.tick span{margin:0 26px}
+.tick em{font-style:normal;color:var(--mint)}
+@keyframes tick{to{transform:translateX(-50%)}}
 
-/* 링크 */
-.links{display:flex;flex-direction:column;gap:10px;margin:26px 0 0}
-.links a{position:relative;display:flex;align-items:center;gap:12px;min-height:60px;padding:0 18px 0 16px;text-decoration:none;
-  background:var(--steel);border:1px solid var(--line2);border-radius:14px;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.06),0 10px 24px -18px rgba(0,0,0,.9);
-  transition:transform .12s ease,border-color .12s ease,background .12s ease}
-.links a:hover{border-color:rgba(143,224,204,.5)}
-.links a:active{transform:scale(.985)}
-.links .ic{flex:none;width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:rgba(143,224,204,.1);color:var(--mint);font-size:13px;font-weight:800;letter-spacing:-.02em}
-.links .ic img{width:100%;height:100%;object-fit:cover;border-radius:10px}
-.links .t{flex:1;min-width:0;font-size:16px;font-weight:700;letter-spacing:-.01em;line-height:1.3}
-.links .t em{display:block;font-style:normal;font-weight:500;font-size:12px;color:var(--muted);margin-top:2px}
-.links .ar{flex:none;color:var(--muted);font-size:16px}
-.links a.ws{background:linear-gradient(180deg,var(--blue) 0%,var(--blue2) 100%);border-color:rgba(255,255,255,.22);color:#fff;
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 16px 34px -18px rgba(91,141,239,.9)}
-.links a.ws .ic{background:rgba(255,255,255,.18);color:#fff}
-.links a.ws .t em{color:#dbe6ff}
-.links a.ws .ar{color:#fff}
-.links a.ig .ic{background:linear-gradient(135deg,#f9a24a,#e1306c 55%,#7b3fe4);color:#fff}
-.links .sec{margin:14px 2px 0;font-size:11px;font-weight:600;letter-spacing:.14em;color:var(--muted);text-transform:uppercase}
+/* ===== INDEX (links) ===== */
+.idx{padding:54px 0 10px}
+.idx .lab{display:flex;justify-content:space-between;align-items:baseline;margin:0 0 18px}
+.idx .lab h2{margin:0;font-size:13px;font-weight:600;letter-spacing:-.01em;color:var(--ink2)}
 
-/* 아래로 안내 */
-.down{margin:40px 0 24px;text-align:center;color:var(--muted);font-size:13px}
-.down span{display:block;margin:10px auto 0;width:1px;height:38px;background:linear-gradient(180deg,var(--mint),transparent)}
+/* 위스토어 hero card */
+.ws{position:relative;display:block;overflow:hidden;border-radius:22px;padding:24px 22px 22px;min-height:196px;color:#fff;
+  background:radial-gradient(120% 90% at 100% 0%,#7aa4ff 0%,var(--blue) 42%,#2a54c4 100%);
+  box-shadow:0 30px 60px -30px rgba(91,141,239,.75),inset 0 1px 0 rgba(255,255,255,.35);
+  transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
+.ws:active{transform:scale(.985)}
+.ws::before{content:"";position:absolute;inset:0;background:
+  repeating-linear-gradient(90deg,rgba(255,255,255,.06) 0 1px,transparent 1px 44px),
+  repeating-linear-gradient(0deg,rgba(255,255,255,.06) 0 1px,transparent 1px 44px);mask:linear-gradient(180deg,rgba(0,0,0,.6),transparent 75%)}
+.ws .k{position:relative;display:flex;justify-content:space-between;align-items:center}
+.ws .k .mono{color:rgba(255,255,255,.75)}
+.ws .k .w{width:38px;height:38px;border-radius:12px;background:#fff;color:var(--blue2);display:grid;place-items:center;font-weight:900;font-size:18px;letter-spacing:-.05em}
+.ws h3{position:relative;margin:34px 0 0;font-size:40px;font-weight:800;letter-spacing:-.04em;line-height:1}
+.ws p{position:relative;margin:10px 0 0;font-size:15px;line-height:1.45;color:rgba(255,255,255,.88);letter-spacing:-.01em;word-break:keep-all}
+.ws .go{position:relative;margin-top:18px;display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.35);padding:9px 14px;border-radius:999px;backdrop-filter:blur(6px)}
+.ws .go i{font-style:normal;transition:transform .3s var(--ease)}
+.ws:hover .go i{transform:translateX(3px)}
 
-/* 채팅 Q&A */
-.chat{padding:8px 0 80px}
-.chat .head{display:flex;align-items:center;gap:12px;padding:14px 4px 18px;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:2;
-  background:linear-gradient(180deg,rgba(11,26,24,.97),rgba(11,26,24,.85));backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
-.chat .head img{width:40px;height:40px;border-radius:50%;object-fit:cover;background:#fff}
-.chat .head b{display:block;font-size:15px;font-weight:700}
-.chat .head small{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted);margin-top:2px}
-.chat .head small i{width:7px;height:7px;border-radius:50%;background:var(--mint2);box-shadow:0 0 0 3px rgba(63,191,163,.18)}
-.day{margin:26px auto 4px;width:max-content;font-size:11px;color:var(--muted);letter-spacing:.06em;padding:4px 10px;border:1px solid var(--line);border-radius:999px}
-.msg{display:flex;align-items:flex-end;gap:8px;margin-top:14px;opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
+/* rows */
+.rows{margin-top:34px;border-top:1px solid var(--line2)}
+.row{position:relative;display:grid;grid-template-columns:34px 1fr auto;align-items:center;gap:14px;padding:18px 0;border-bottom:1px solid var(--line);overflow:hidden;
+  transition:padding .3s var(--ease)}
+.row .n{font-family:var(--mono);font-size:11px;color:var(--mute);letter-spacing:.08em}
+.row .t{font-size:20px;font-weight:700;letter-spacing:-.025em;line-height:1.2;transition:transform .35s var(--ease)}
+.row .m{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;color:var(--mute);text-transform:uppercase;text-align:right;white-space:nowrap}
+.row .im{position:absolute;right:-6px;top:50%;width:92px;height:62px;border-radius:10px;object-fit:cover;transform:translateY(-50%) translateX(14px) rotate(4deg);opacity:0;pointer-events:none;
+  filter:saturate(1.05);box-shadow:0 20px 40px -18px rgba(0,0,0,.9);transition:opacity .35s var(--ease),transform .45s var(--ease)}
+.row.ig .t{background:linear-gradient(90deg,#f9a24a,#e1306c 55%,#7b3fe4);-webkit-background-clip:text;background-clip:text;color:transparent}
+@media(hover:hover){
+  .row:hover{padding-left:6px}
+  .row:hover .im{opacity:1;transform:translateY(-50%) translateX(0) rotate(-2deg)}
+  .row:hover .m{opacity:0}
+}
+.row:active .t{transform:translateX(4px)}
+.row .ar{position:absolute;right:0;top:50%;transform:translateY(-50%);font-size:18px;color:var(--mute);opacity:0;transition:opacity .25s}
+@media(hover:hover){.row:hover .ar{opacity:1}}
+
+/* strip photo */
+.strip{margin:44px -22px 0;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:4px;height:150px}
+.strip img{width:100%;height:100%;object-fit:cover;filter:saturate(.9) contrast(1.05)}
+.strip img:nth-child(2){object-position:50% 40%}
+.strip figcaption{position:absolute}
+
+/* ===== CHAT Q&A ===== */
+.qa{padding:64px 0 90px}
+.qa .intro{margin:0 0 26px}
+.qa .intro h2{margin:8px 0 0;font-size:clamp(30px,8vw,40px);font-weight:800;letter-spacing:-.04em;line-height:1.05}
+.qa .intro p{margin:12px 0 0;color:var(--ink2);font-size:15px;line-height:1.55;word-break:keep-all}
+.chat{position:relative;border:1px solid var(--line2);border-radius:26px;background:linear-gradient(180deg,#0f1513,#0a0e0d);overflow:clip;
+  box-shadow:0 40px 80px -50px rgba(0,0,0,1)}
+.chat .head{position:sticky;top:0;z-index:3;display:flex;align-items:center;gap:12px;padding:14px 18px;border-bottom:1px solid var(--line);
+  background:rgba(12,17,15,.86);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px)}
+.chat .head img{width:38px;height:38px;border-radius:50%;object-fit:cover;background:#fff}
+.chat .head b{display:block;font-size:14px;font-weight:700;letter-spacing:-.01em}
+.chat .head small{display:flex;align-items:center;gap:6px;font-size:11.5px;color:var(--mute);margin-top:2px}
+.chat .head small i{width:6px;height:6px;border-radius:50%;background:#4ad48f;box-shadow:0 0 0 3px rgba(74,212,143,.18)}
+.chat .head .r{margin-left:auto;font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--mute)}
+.log{padding:6px 14px 18px}
+.ch{margin:30px 0 6px;display:flex;align-items:center;gap:10px}
+.ch::before,.ch::after{content:"";flex:1;height:1px;background:var(--line)}
+.ch span{font-family:var(--mono);font-size:10px;letter-spacing:.18em;color:var(--mute);text-transform:uppercase}
+.msg{display:flex;align-items:flex-end;gap:8px;margin-top:12px;opacity:0;transform:translateY(12px) scale(.98);transform-origin:bottom left;transition:opacity .45s var(--ease),transform .55s var(--ease)}
 .msg.in{opacity:1;transform:none}
 .msg.q{justify-content:flex-start}
-.msg.a{justify-content:flex-end}
-.msg .av{flex:none;width:30px;height:30px;border-radius:50%;object-fit:cover;background:#fff;align-self:flex-start}
-.msg.q .av{background:#1a302c;color:var(--mint);display:grid;place-items:center;font-size:12px;font-weight:800}
-.bub{max-width:82%;padding:12px 15px;font-size:15px;line-height:1.6;letter-spacing:-.01em;word-break:keep-all;white-space:pre-line}
-.msg.q .bub{background:#17302b;border:1px solid var(--line2);border-radius:18px 18px 18px 6px;color:var(--ink)}
-.msg.a .bub{background:linear-gradient(180deg,#3fbfa3,#2fa78d);color:#06201a;border-radius:18px 18px 6px 18px;font-weight:500;box-shadow:0 14px 30px -18px rgba(63,191,163,.8)}
+.msg.a{justify-content:flex-end;transform-origin:bottom right}
+.msg .av{flex:none;width:26px;height:26px;border-radius:50%;object-fit:cover;background:#fff;align-self:flex-end}
+.bub{position:relative;max-width:84%;padding:11px 14px;font-size:15px;line-height:1.55;letter-spacing:-.012em;word-break:keep-all;white-space:pre-line}
+.msg.q .bub{background:#1a211e;color:var(--ink);border-radius:18px 18px 18px 5px}
+.msg.a .bub{background:linear-gradient(180deg,#f4f3ee,#e6e5df);color:#0c1210;border-radius:18px 18px 5px 18px;font-weight:500}
+.msg.a .bub.draft{background:transparent;border:1px dashed rgba(242,241,236,.3);color:var(--mute);font-weight:400;font-size:13.5px}
 .msg.a .bub b{font-weight:800}
-.msg.a .name{display:none}
-.typing{display:inline-flex;gap:4px;padding:12px 14px}
-.typing i{width:6px;height:6px;border-radius:50%;background:#06201a;opacity:.5;animation:blink 1s infinite}
-.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+.msg .bub .ty{display:inline-flex;gap:4px;align-items:center;height:18px}
+.msg .bub .ty i{width:6px;height:6px;border-radius:50%;background:#0c1210;opacity:.35;animation:blink 1s infinite}
+.msg .bub .ty i:nth-child(2){animation-delay:.15s}.msg .bub .ty i:nth-child(3){animation-delay:.3s}
 @keyframes blink{0%,80%,100%{opacity:.25}40%{opacity:.9}}
-.ask{margin-top:34px;display:flex;gap:8px;align-items:center;padding:8px 8px 8px 16px;border:1px solid var(--line2);border-radius:999px;background:rgba(255,255,255,.03);color:var(--muted);font-size:14px}
-.ask span{flex:1}
-.ask a{flex:none;text-decoration:none;font-size:13px;font-weight:700;color:#06201a;background:var(--mint);padding:10px 14px;border-radius:999px}
-footer{padding:0 0 max(28px,env(safe-area-inset-bottom));text-align:center;color:var(--muted);font-size:12px;line-height:1.8}
-footer b{color:var(--mint);font-weight:600;letter-spacing:.1em}
-@media(prefers-reduced-motion:reduce){.msg{opacity:1;transform:none;transition:none}.typing i{animation:none}html{scroll-behavior:auto}}
-@media(min-width:900px){.wrap{max-width:520px}.me .pic{width:128px;height:128px}}
+.msg.a .bub[data-text]:not(.done){min-width:56px}
+.msg.a .bub.done .ty{display:none}
+.time{margin:26px auto 0;width:max-content;font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--mute)}
+.compose{display:flex;gap:8px;align-items:center;padding:10px 10px 10px 16px;border-top:1px solid var(--line);background:rgba(255,255,255,.02)}
+.compose span{flex:1;color:var(--mute);font-size:14px}
+.compose a{flex:none;font-size:13px;font-weight:700;color:#0c1210;background:var(--mint);padding:10px 14px;border-radius:999px}
+
+footer{padding:0 0 max(28px,env(safe-area-inset-bottom));display:flex;justify-content:space-between;align-items:baseline;color:var(--mute);font-size:12px}
+footer b{font-family:var(--mono);font-weight:500;letter-spacing:.14em;color:var(--ink2)}
+
+@media(prefers-reduced-motion:reduce){
+  .msg{opacity:1;transform:none;transition:none}.tick div{animation:none}.hero .cue b{animation:none}
+  .msg.a .bub .ty{display:none}html{scroll-behavior:auto}
+}
+@media(min-width:900px){
+  .hero{min-height:88svh}
+  .hero .ph img{object-position:50% 30%}
+  .hero h1{font-size:120px}
+  .row .t{font-size:24px}
+}
 </style>
 </head>
 <body>
+
+<header class="hero">
+  <div class="ph"><img src="assets/portrait.jpg" alt="" id="hero-img"></div>
+  <div class="top"><span class="mono">chungrim.me</span><span class="mono">Incheon, KR</span></div>
+  <div class="body">
+    <h1><small>강청림 / Kang Chungrim</small>강청림</h1>
+    <div class="tag">
+      <span><i>01</i>외식업 기획.</span>
+      <span><i>02</i>컨설팅.</span>
+      <span><i>03</i>앱서비스.</span>
+    </div>
+    <div class="cue"><b></b>가게 다섯 곳, 앱 하나, 그리고 질문들</div>
+  </div>
+</header>
+
+<div class="tick" aria-hidden="true"><div>
+  <span>뱃꼬동 해물포차</span><span>뱃꼬동 숙성집</span><span>철계직화장</span><span><em>WeStore</em></span><span>@cxnrim</span>
+  <span>뱃꼬동 해물포차</span><span>뱃꼬동 숙성집</span><span>철계직화장</span><span><em>WeStore</em></span><span>@cxnrim</span>
+</div></div>
+
 <main class="wrap">
 
-<section class="me">
-  <div class="pic"><img src="assets/portrait.jpg" alt="강청림"></div>
-  <h1>강청림</h1>
-  <p class="tag">외식업 기획. 컨설팅. 앱서비스.</p>
-  <span class="site">chungrim.me</span>
+<section class="idx" aria-label="링크">
+  <div class="lab"><h2>만드는 것</h2><span class="mono">01</span></div>
+  <a class="ws" href="https://westoreapp.com" target="_blank" rel="noopener">
+    <div class="k"><span class="mono">App</span><span class="w">W</span></div>
+    <h3>위스토어</h3>
+    <p>사장님과 직원이 따로 일하지 않고, 함께 매장을 만들어가게 하는 앱. 제 가게에서 먼저 씁니다.</p>
+    <span class="go">westoreapp.com <i>→</i></span>
+  </a>
+
+  <div class="lab" style="margin-top:44px"><h2>운영하는 매장</h2><span class="mono">02</span></div>
+  <nav class="rows">
+    <a class="row" href="https://naver.me/FBe2jxbP" target="_blank" rel="noopener"><span class="n">01</span><span class="t">뱃꼬동 해물포차 구월점</span><span class="m">Naver</span><img class="im" src="assets/sea.jpg" alt=""><span class="ar">→</span></a>
+    <a class="row" href="https://naver.me/FLEIjH4e" target="_blank" rel="noopener"><span class="n">02</span><span class="t">뱃꼬동 해물포차 부평점</span><span class="m">Naver</span><img class="im" src="assets/bupyeong.jpg" alt=""><span class="ar">→</span></a>
+    <a class="row" href="https://naver.me/GJ5AwLhq" target="_blank" rel="noopener"><span class="n">03</span><span class="t">뱃꼬동 숙성집 구월점</span><span class="m">Naver</span><img class="im" src="assets/shop.jpg" alt=""><span class="ar">→</span></a>
+    <a class="row" href="https://naver.me/GNJh3uQR" target="_blank" rel="noopener"><span class="n">04</span><span class="t">뱃꼬동 숙성집 전주 신시가지점</span><span class="m">Naver</span><span class="ar">→</span></a>
+    <a class="row" href="https://naver.me/FbVoibsV" target="_blank" rel="noopener"><span class="n">05</span><span class="t">철계직화장 구월점</span><span class="m">Naver</span><img class="im" src="assets/chicken.jpg" alt=""><span class="ar">→</span></a>
+    <a class="row ig" href="https://instagram.com/cxnrim" target="_blank" rel="noopener"><span class="n">06</span><span class="t">Instagram</span><span class="m">@cxnrim</span><span class="ar">→</span></a>
+  </nav>
+
+  <div class="strip" aria-hidden="true">
+    <img src="assets/shop.jpg" alt=""><img src="assets/sea.jpg" alt=""><img src="assets/chicken.jpg" alt="">
+  </div>
 </section>
 
-<nav class="links" aria-label="링크">
-  <a class="ws" href="https://westoreapp.com" target="_blank" rel="noopener">
-    <span class="ic">W</span>
-    <span class="t">위스토어<em>사장님과 직원이 함께 운영하는 매장 운영 앱</em></span>
-    <span class="ar">→</span>
-  </a>
-  <p class="sec">운영하는 매장</p>
-  <a href="https://naver.me/FBe2jxbP" target="_blank" rel="noopener"><span class="ic"><img src="assets/sea.jpg" alt=""></span><span class="t">뱃꼬동 해물포차 구월점</span><span class="ar">→</span></a>
-  <a href="https://naver.me/FLEIjH4e" target="_blank" rel="noopener"><span class="ic"><img src="assets/bupyeong.jpg" alt=""></span><span class="t">뱃꼬동 해물포차 부평점</span><span class="ar">→</span></a>
-  <a href="https://naver.me/GJ5AwLhq" target="_blank" rel="noopener"><span class="ic"><img src="assets/shop.jpg" alt=""></span><span class="t">뱃꼬동 숙성집 구월점</span><span class="ar">→</span></a>
-  <a href="https://naver.me/GNJh3uQR" target="_blank" rel="noopener"><span class="ic">숙</span><span class="t">뱃꼬동 숙성집 전주 신시가지점</span><span class="ar">→</span></a>
-  <a href="https://naver.me/FbVoibsV" target="_blank" rel="noopener"><span class="ic"><img src="assets/chicken.jpg" alt=""></span><span class="t">철계직화장 구월점</span><span class="ar">→</span></a>
-  <p class="sec">소식</p>
-  <a class="ig" href="https://instagram.com/cxnrim" target="_blank" rel="noopener"><span class="ic">◎</span><span class="t">Instagram<em>@cxnrim</em></span><span class="ar">→</span></a>
-</nav>
-
-<a class="down" href="#qa" style="display:block;text-decoration:none">궁금한 것들에 답해 뒀습니다<span></span></a>
-
-<section class="chat" id="qa" aria-label="질문과 답">
-  <div class="head">
-    <img src="assets/drawing.jpg" alt="">
-    <div><b>강청림</b><small><i></i>대답해 둔 것들</small></div>
+<section class="qa" id="qa" aria-label="질문과 답">
+  <div class="intro">
+    <span class="mono">03 / Q&amp;A</span>
+    <h2>다들 이걸 물어봅니다.</h2>
+    <p>가게에서, DM에서, 술자리에서 자주 받은 질문에 미리 답해 뒀습니다. 아래로 내리면 대화가 이어집니다.</p>
   </div>
 
-  <div class="day">자주 받는 질문</div>
+  <div class="chat">
+    <div class="head">
+      <img src="assets/drawing.jpg" alt="">
+      <div><b>강청림</b><small><i></i>보통 새벽에 답합니다</small></div>
+      <span class="r">Q&amp;A</span>
+    </div>
 
-  <div class="msg q"><span class="av">?</span><div class="bub">뱃꼬동은 어떻게 시작하게 되었나요?</div></div>
-  <div class="msg a"><div class="bub">(청림님 답변 자리) 시작한 계기와 첫 가게 이야기를 여기에 씁니다.</div><img class="av" src="assets/drawing.jpg" alt=""></div>
+    <div class="log">
+      <div class="ch"><span>시작</span></div>
+      <div class="msg q"><div class="bub">뱃꼬동, 이름이 왜 뱃꼬동이에요?</div></div>
+      <div class="msg a"><div class="bub draft">이름의 뜻과 지은 사연. 청림님 답변 자리.</div><img class="av" src="assets/drawing.jpg" alt=""></div>
 
-  <div class="msg q"><span class="av">?</span><div class="bub">뱃꼬동이 유명해지기까지 어떤 일이 있었나요?</div></div>
-  <div class="msg a"><div class="bub">(청림님 답변 자리) 잘 안 되던 때, 바뀐 계기, 지금까지 지키는 것을 씁니다.</div><img class="av" src="assets/drawing.jpg" alt=""></div>
+      <div class="msg q"><div class="bub">첫 가게는 몇 살에, 돈은 어떻게 마련해서 열었어요?</div></div>
+      <div class="msg a"><div class="bub draft">나이, 자본, 첫 가게 위치와 크기. 청림님 답변 자리.</div><img class="av" src="assets/drawing.jpg" alt=""></div>
 
-  <div class="msg q"><span class="av">?</span><div class="bub">그래서 대체 뭐 하는 사람이에요?</div></div>
-  <div class="msg a"><div class="bub">가게를 직접 운영하면서, 새 브랜드를 기획하고, 매장에서 필요했던 앱을 만듭니다.
-한 줄로 하면 <b>외식업 기획. 컨설팅. 앱서비스.</b></div><img class="av" src="assets/drawing.jpg" alt=""></div>
+      <div class="msg q"><div class="bub">망할 뻔한 적 있어요?</div></div>
+      <div class="msg a"><div class="bub draft">제일 힘들었던 시기와 그때 무엇을 바꿨는지. 청림님 답변 자리.</div><img class="av" src="assets/drawing.jpg" alt=""></div>
 
-  <div class="msg q"><span class="av">?</span><div class="bub">위스토어는 왜 만들었어요?</div></div>
-  <div class="msg a"><div class="bub">(청림님 답변 자리) 매장을 하면서 아쉬웠던 것, 그래서 어떤 앱을 만들었는지 씁니다.</div><img class="av" src="assets/drawing.jpg" alt=""></div>
+      <div class="ch"><span>뱃꼬동</span></div>
+      <div class="msg q"><div class="bub">웨이팅이 생기기 시작한 건 언제부터예요? 계기가 있었어요?</div></div>
+      <div class="msg a"><div class="bub draft">전환점이 된 메뉴, 사진, 손님, 사건. 청림님 답변 자리.</div><img class="av" src="assets/drawing.jpg" alt=""></div>
 
-  <div class="msg q"><span class="av">?</span><div class="bub">가게를 여러 개 하면서 제일 중요하게 보는 건 뭐예요?</div></div>
-  <div class="msg a"><div class="bub">(청림님 답변 자리) 사람, 맛, 돈 중 무엇을 먼저 보는지 청림님 철학을 씁니다.</div><img class="av" src="assets/drawing.jpg" alt=""></div>
+      <div class="msg q"><div class="bub">해물포차, 숙성집, 철계직화장. 왜 하나로 안 하고 세 개나 해요?</div></div>
+      <div class="msg a"><div class="bub draft">브랜드를 나눈 이유와 각각의 역할. 청림님 답변 자리.</div><img class="av" src="assets/drawing.jpg" alt=""></div>
 
-  <div class="msg q"><span class="av">?</span><div class="bub">다음에는 뭘 할 거예요?</div></div>
-  <div class="msg a"><div class="bub">(청림님 답변 자리) 준비 중인 브랜드와 서비스 이야기를 씁니다.</div><img class="av" src="assets/drawing.jpg" alt=""></div>
+      <div class="msg q"><div class="bub">메뉴 가격은 어떻게 정해요? 그냥 원가 곱하기예요?</div></div>
+      <div class="msg a"><div class="bub draft">가격을 정하는 기준과 원칙. 청림님 답변 자리.</div><img class="av" src="assets/drawing.jpg" alt=""></div>
 
-  <div class="msg a"><div class="bub typing"><i></i><i></i><i></i></div><img class="av" src="assets/drawing.jpg" alt=""></div>
+      <div class="ch"><span>사람과 운영</span></div>
+      <div class="msg q"><div class="bub">가게가 다섯 개면 사장이 매일 어디에 있어요?</div></div>
+      <div class="msg a"><div class="bub draft">하루 일과, 점장과 동업자와 역할을 어떻게 나누는지. 청림님 답변 자리.</div><img class="av" src="assets/drawing.jpg" alt=""></div>
 
-  <div class="ask"><span>더 궁금한 게 있으면</span><a href="https://instagram.com/cxnrim" target="_blank" rel="noopener">DM 보내기</a></div>
+      <div class="msg q"><div class="bub">직원한테 제일 자주 하는 말이 뭐예요?</div></div>
+      <div class="msg a"><div class="bub draft">한 문장. 그리고 그 말을 하는 이유. 청림님 답변 자리.</div><img class="av" src="assets/drawing.jpg" alt=""></div>
+
+      <div class="msg q"><div class="bub">사장이 없어도 가게가 돌아가게 하려면 뭐가 제일 중요해요?</div></div>
+      <div class="msg a"><div class="bub draft">운영 철학의 핵심 한 가지. 청림님 답변 자리.</div><img class="av" src="assets/drawing.jpg" alt=""></div>
+
+      <div class="ch"><span>위스토어</span></div>
+      <div class="msg q"><div class="bub">가게 하면서 앱까지 만드는 이유가 뭐예요?</div></div>
+      <div class="msg a"><div class="bub draft">매장에서 겪은 불편, 있는 앱들이 안 맞았던 이유. 청림님 답변 자리.</div><img class="av" src="assets/drawing.jpg" alt=""></div>
+
+      <div class="msg q"><div class="bub">개발 못 하잖아요. 어떻게 만들어요?</div></div>
+      <div class="msg a"><div class="bub draft">AI와 함께 만드는 방식, 직접 하는 범위. 청림님 답변 자리.</div><img class="av" src="assets/drawing.jpg" alt=""></div>
+
+      <div class="msg q"><div class="bub">컨설팅은 어떤 사람한테, 뭘 해줘요?</div></div>
+      <div class="msg a"><div class="bub draft">대상, 범위, 안 하는 것. 청림님 답변 자리.</div><img class="av" src="assets/drawing.jpg" alt=""></div>
+
+      <div class="ch"><span>그래서</span></div>
+      <div class="msg q"><div class="bub">그래서 대체 뭐 하는 사람이에요?</div></div>
+      <div class="msg a"><div class="bub" data-text="가게를 직접 운영하면서, 새 브랜드를 기획하고, 매장에서 필요했던 앱을 만듭니다.
+한 줄로 하면 &lt;b&gt;외식업 기획. 컨설팅. 앱서비스.&lt;/b&gt;"><span class="ty"><i></i><i></i><i></i></span></div><img class="av" src="assets/drawing.jpg" alt=""></div>
+
+      <div class="msg q"><div class="bub">다음엔 뭐 해요?</div></div>
+      <div class="msg a"><div class="bub draft">준비 중인 브랜드와 서비스. 말할 수 있는 만큼만. 청림님 답변 자리.</div><img class="av" src="assets/drawing.jpg" alt=""></div>
+
+      <div class="time">여기까지 읽으셨으면 DM 하셔도 됩니다</div>
+    </div>
+    <div class="compose"><span>궁금한 게 더 있으면</span><a href="https://instagram.com/cxnrim" target="_blank" rel="noopener">DM 보내기</a></div>
+  </div>
 </section>
 
-<footer><b>CHUNGRIM.ME</b><br>강청림 / 외식업 기획. 컨설팅. 앱서비스.</footer>
+<footer><b>CHUNGRIM.ME</b><span>강청림 / 외식업 기획. 컨설팅. 앱서비스.</span></footer>
 </main>
 
 <script>
 (function(){
+  var rm=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  /* hero parallax */
+  var img=document.getElementById('hero-img');
+  if(img&&!rm){window.addEventListener('scroll',function(){var y=window.scrollY;if(y<900)img.style.transform='scale(1.04) translateY('+(y*.18)+'px)'},{passive:true})}
+  /* chat reveal */
   var msgs=document.querySelectorAll('.msg');
-  if(!('IntersectionObserver' in window)){msgs.forEach(function(m){m.classList.add('in')});return}
+  function reveal(m){
+    m.classList.add('in');
+    var b=m.querySelector('.bub[data-text]');
+    if(b){ setTimeout(function(){b.innerHTML=b.getAttribute('data-text');b.classList.add('done')},rm?0:900); }
+  }
+  if(!('IntersectionObserver' in window)){msgs.forEach(reveal);return}
   var io=new IntersectionObserver(function(es){
-    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
-  },{rootMargin:'0px 0px -12% 0px',threshold:.15});
+    es.forEach(function(e){ if(e.isIntersecting){ reveal(e.target); io.unobserve(e.target);} });
+  },{rootMargin:'0px 0px -10% 0px',threshold:.2});
   msgs.forEach(function(m){io.observe(m)});
 })();
 </script>

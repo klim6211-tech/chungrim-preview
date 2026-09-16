@@ -66,13 +66,20 @@ a{color:inherit;text-decoration:none}
 .msg{display:flex;align-items:flex-end;gap:8px;margin-top:12px;opacity:0;transform:translateY(14px) scale(.92);transform-origin:bottom left;transition:opacity .35s var(--ease),transform .6s var(--spring)}
 .msg.in{opacity:1;transform:none}
 .msg.q+.msg.a,.msg.a+.msg.q{margin-top:26px}
-.msg.q{justify-content:flex-start}
-.msg.a{justify-content:flex-end;transform-origin:bottom right}
+/* 읽는 사람 = 오른쪽 */
+.msg.q{justify-content:flex-end;transform-origin:bottom right}
+.msg.q .who{display:none}
+/* 청림 = 왼쪽, 사진은 연속 답의 마지막에만 */
+.msg.a{flex-direction:row-reverse;justify-content:flex-end}
+.msg.a:not(:has(.who)){padding-left:36px}
+.msg.a:has(+ .msg.a .who) .who{visibility:hidden}
 .msg .who{flex:none;width:28px;height:28px;border-radius:50%;object-fit:cover;object-position:52% 32%;align-self:flex-end}
-.msg.q .who{display:grid;place-items:center;font-size:13px;font-weight:700;color:var(--ink2);border-radius:50%}
 .bub{position:relative;max-width:78%;padding:10px 14px;font-size:16px;line-height:1.45;letter-spacing:-.015em;word-break:keep-all;white-space:pre-line;border-radius:20px}
-.msg.q .bub{color:var(--ink);border-bottom-left-radius:6px}
-.msg.a .bub{background:var(--blue);color:#fff;border-bottom-right-radius:6px;font-weight:500;box-shadow:0 10px 30px -14px rgba(10,132,255,.7)}
+.msg.q .bub{max-width:72%;font-size:15px;color:#fff;border-bottom-right-radius:6px;background:rgba(10,132,255,.42);border-color:rgba(120,180,255,.35)}
+.msg.q .bub::before{display:none}
+.msg.a .bub{color:var(--ink);border-bottom-left-radius:6px;font-size:16.5px;background:rgba(255,255,255,.13);border:1px solid var(--g-line);
+  backdrop-filter:blur(28px) saturate(1.8);-webkit-backdrop-filter:blur(28px) saturate(1.8);
+  box-shadow:inset 0 1px 0 var(--g-hi),inset 0 -1px 0 rgba(0,0,0,.25),0 18px 50px -24px rgba(0,0,0,.9)}
 .msg .bub .ty{display:inline-flex;gap:4px;align-items:center;height:20px}
 .msg .bub .ty i{width:7px;height:7px;border-radius:50%;background:#fff;opacity:.35;animation:blink 1s infinite}
 .msg .bub .ty i:nth-child(2){animation-delay:.15s}.msg .bub .ty i:nth-child(3){animation-delay:.3s}
@@ -81,7 +88,7 @@ a{color:inherit;text-decoration:none}
 .msg.a .bub.done .ty{display:none}
 
 /* glass link cards */
-.msg.a .card{max-width:78%;width:100%;margin-left:auto}
+.msg.a .card{max-width:78%;width:100%;margin-right:auto}
 .card{display:block;border-radius:22px;overflow:hidden;transition:transform .35s var(--spring)}
 .card:active{transform:scale(.97)}
 @media(hover:hover){.card:hover{transform:translateY(-2px)}}
@@ -102,7 +109,7 @@ a{color:inherit;text-decoration:none}
 .card.ig .th{background:linear-gradient(135deg,#f9a24a,#e1306c 55%,#7b3fe4)}
 .card.ig .th b{font-size:22px;color:#fff;font-weight:700}
 
-.msg.a .pic{max-width:78%;margin-left:auto;border-radius:22px;padding:4px;display:block}
+.msg.a .pic{max-width:78%;margin-right:auto;border-radius:22px;padding:4px;display:block}
 .msg.a .pic img{display:block;width:100%;border-radius:18px}
 
 /* floating glass compose */

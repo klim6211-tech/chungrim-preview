@@ -229,10 +229,30 @@ footer{padding:0 0 100px;text-align:center;color:var(--mute);font-size:11px;lett
   var bar=document.getElementById('bar'),pro=document.querySelector('.pro');
   window.addEventListener('scroll',function(){bar.classList.toggle('show',window.scrollY>pro.offsetHeight-10)},{passive:true});
   var msgs=document.querySelectorAll('.msg');
+  /* 줄바꿈된 말풍선이 최대 폭으로 늘어나 오른쪽이 비는 것을 실제 글줄 폭에 맞춰 줄인다 */
+  function lines(b){
+    var r=document.createRange();r.selectNodeContents(b);
+    var rs=r.getClientRects(),n=0,rt=-Infinity,l=Infinity;
+    for(var i=0;i<rs.length;i++){if(rs[i].width<1)continue;n++;l=Math.min(l,rs[i].left);rt=Math.max(rt,rs[i].right)}
+    var k=b.getBoundingClientRect().width/b.offsetWidth||1; /* 떠오르는 중 scale 보정 */
+    return {n:n,w:(rt-l)/k};
+  }
+  function fit(b){
+    b.style.width='';
+    var m=lines(b);if(m.n<2)return;
+    var cs=getComputedStyle(b),pad=parseFloat(cs.paddingLeft)+parseFloat(cs.paddingRight)+parseFloat(cs.borderLeftWidth)+parseFloat(cs.borderRightWidth);
+    /* 줄 수가 늘지 않는 가장 좁은 폭을 찾는다 */
+    var hi=b.offsetWidth,lo=Math.ceil(pad+20);
+    while(hi-lo>1){var mid=(hi+lo)>>1;b.style.width=mid+'px';if(lines(b).n>m.n)lo=mid;else hi=mid}
+    b.style.width=hi+'px';
+  }
+  function fitAll(){document.querySelectorAll('.msg.q .bub,.bub.done').forEach(fit)}
+  (document.fonts&&document.fonts.ready||Promise.resolve()).then(fitAll);
+  var rt0;window.addEventListener('resize',function(){clearTimeout(rt0);rt0=setTimeout(fitAll,120)});
   function reveal(m){
     m.classList.add('in');
     var b=m.querySelector('.bub[data-text]');
-    if(b){setTimeout(function(){b.innerHTML=b.getAttribute('data-text');b.classList.add('done')},rm?0:800)}
+    if(b){setTimeout(function(){b.innerHTML=b.getAttribute('data-text');b.classList.add('done');fit(b)},rm?0:800)}
   }
   if(!('IntersectionObserver' in window)){msgs.forEach(reveal);return}
   var io=new IntersectionObserver(function(es){

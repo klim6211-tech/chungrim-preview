@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <style>
 :root{
-  --bg:#0a0d16;
+  --bg:#050507;
   --ink:#f7f8fb;--ink2:#b4b8c4;--mute:#7f8494;
   --blue:#0A84FF;--green:#30D158;
   --g-fill:rgba(255,255,255,.10);--g-line:rgba(255,255,255,.20);--g-hi:rgba(255,255,255,.36);
@@ -23,12 +23,12 @@ a{color:inherit;text-decoration:none}
 
 /* ambient color behind the glass */
 .amb{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none;background:var(--bg)}
-.amb i{position:absolute;border-radius:50%;filter:blur(80px);opacity:.75;will-change:transform;animation:drift 22s ease-in-out infinite alternate}
+.amb i{position:absolute;border-radius:50%;filter:blur(80px);opacity:.42;will-change:transform;animation:drift 22s ease-in-out infinite alternate}
 .amb i:nth-child(1){width:60vmax;height:60vmax;left:-20vmax;top:-18vmax;background:#2d63e6}
 .amb i:nth-child(2){width:50vmax;height:50vmax;right:-18vmax;top:22vh;background:#7a3ddb;animation-duration:27s;animation-delay:-8s}
 .amb i:nth-child(3){width:46vmax;height:46vmax;left:-8vmax;bottom:-20vmax;background:#149bb4;animation-duration:31s;animation-delay:-15s}
 @keyframes drift{to{transform:translate(9vw,7vh) scale(1.12)}}
-.amb::after{content:"";position:absolute;inset:0;background:radial-gradient(90% 70% at 50% 40%,transparent,rgba(0,0,0,.38))}
+.amb::after{content:"";position:absolute;inset:0;background:radial-gradient(90% 70% at 50% 40%,transparent,rgba(0,0,0,.55))}
 
 /* glass primitive */
 .glass{position:relative;background:var(--g-fill);border:1px solid var(--g-line);

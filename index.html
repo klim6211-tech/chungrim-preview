@@ -5,208 +5,218 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>강청림 chungrim.me</title>
 <meta name="description" content="인천에서 해산물 포차와 닭발 전문점을 운영하고, 지금은 앱서비스 개발에 몰두 중인 사람. 외식업 기획 / 컨설팅 / 앱서비스.">
-<meta name="theme-color" content="#0a1411">
+<meta name="theme-color" content="#000000">
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <style>
 :root{
-  --bg:#0a1411;--bg2:#0d1a16;--panel:#122019;--panel2:#16261f;
-  --ink:#eef1ec;--ink2:#a9b4ad;--mute:#6b7a71;
-  --line:rgba(238,241,236,.08);--line2:rgba(238,241,236,.16);
-  --me:#1d5a4a;--me2:#164838;--mint:#9fe3c9;--blue:#5B8DEF;
-  --ease:cubic-bezier(.2,.7,.2,1);
+  --bg:#000;
+  --ink:#f5f5f7;--ink2:#a1a1a6;--mute:#6e6e73;
+  --blue:#0A84FF;--green:#30D158;
+  --g-fill:rgba(255,255,255,.07);--g-line:rgba(255,255,255,.14);--g-hi:rgba(255,255,255,.28);
+  --spring:cubic-bezier(.34,1.4,.4,1);--ease:cubic-bezier(.2,.7,.2,1);
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html{background:var(--bg)}
-body{margin:0;color:var(--ink);font-family:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR",system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;font-feature-settings:"ss05","cv11";
-  background:radial-gradient(120% 60% at 50% 0%,#12271f 0%,var(--bg) 60%) fixed}
-body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:9;opacity:.07;mix-blend-mode:overlay;
-  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+body{margin:0;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Pretendard Variable",Pretendard,"Apple SD Gothic Neo","Noto Sans KR",system-ui,sans-serif;-webkit-font-smoothing:antialiased;overflow-x:hidden;font-feature-settings:"ss05","cv11"}
 a{color:inherit;text-decoration:none}
+
+/* ambient color behind the glass */
+.amb{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none;background:#000}
+.amb i{position:absolute;border-radius:50%;filter:blur(70px);opacity:.55;will-change:transform;animation:drift 22s ease-in-out infinite alternate}
+.amb i:nth-child(1){width:60vmax;height:60vmax;left:-20vmax;top:-18vmax;background:#1c3a8a}
+.amb i:nth-child(2){width:50vmax;height:50vmax;right:-18vmax;top:22vh;background:#3a1a6e;animation-duration:27s;animation-delay:-8s}
+.amb i:nth-child(3){width:46vmax;height:46vmax;left:-8vmax;bottom:-20vmax;background:#0b4d5c;animation-duration:31s;animation-delay:-15s}
+@keyframes drift{to{transform:translate(9vw,7vh) scale(1.12)}}
+.amb::after{content:"";position:absolute;inset:0;background:radial-gradient(90% 70% at 50% 40%,transparent,rgba(0,0,0,.55))}
+
+/* glass primitive */
+.glass{position:relative;background:var(--g-fill);border:1px solid var(--g-line);
+  backdrop-filter:blur(28px) saturate(1.8);-webkit-backdrop-filter:blur(28px) saturate(1.8);
+  box-shadow:inset 0 1px 0 var(--g-hi),inset 0 -1px 0 rgba(0,0,0,.25),0 18px 50px -24px rgba(0,0,0,.9)}
+.glass::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;
+  background:linear-gradient(160deg,rgba(255,255,255,.18) 0%,rgba(255,255,255,.02) 38%,transparent 60%)}
+
 .wrap{position:relative;z-index:1;max-width:520px;margin:0 auto;padding:0 16px}
 
-/* tin strip: the one retro point */
-.tin{height:7px;background:
-  repeating-linear-gradient(90deg,rgba(255,255,255,.05) 0 2px,transparent 2px 7px),
-  linear-gradient(180deg,#b9c2bd,#6d7873 45%,#9aa39e 55%,#4d5753)}
-
 /* ===== PROFILE ===== */
-.pro{padding:calc(env(safe-area-inset-top) + 30px) 0 10px;text-align:center}
-.pro .av{width:96px;height:96px;border-radius:50%;object-fit:cover;object-position:52% 32%;border:2px solid rgba(238,241,236,.18);box-shadow:0 18px 40px -20px rgba(0,0,0,.9)}
-.pro h1{margin:16px 0 0;font-size:26px;font-weight:800;letter-spacing:-.03em;line-height:1.1}
-.pro h1 small{display:block;margin-top:4px;font-size:12px;font-weight:500;letter-spacing:.06em;color:var(--mute)}
+.pro{padding:calc(env(safe-area-inset-top) + 34px) 0 6px;text-align:center}
+.pro .ring{display:inline-grid;place-items:center;width:112px;height:112px;border-radius:50%;padding:5px}
+.pro .av{width:100%;height:100%;border-radius:50%;object-fit:cover;object-position:52% 32%;display:block}
+.pro h1{margin:16px 0 0;font-size:28px;font-weight:700;letter-spacing:-.03em;line-height:1.1}
+.pro h1 small{display:block;margin-top:4px;font-size:12.5px;font-weight:500;letter-spacing:.02em;color:var(--mute)}
 .pro .tag{margin:10px 0 0;font-size:15px;color:var(--ink2);letter-spacing:-.01em;font-weight:500}
 .pro .tag i{font-style:normal;color:var(--mute);margin:0 8px;font-weight:300}
-.pro .on{margin:14px auto 0;width:max-content;display:flex;align-items:center;gap:7px;font-size:12px;color:var(--ink2);padding:6px 12px;border-radius:999px;border:1px solid var(--line2);background:rgba(238,241,236,.03)}
-.pro .on b{width:7px;height:7px;border-radius:50%;background:var(--mint);box-shadow:0 0 0 3px rgba(159,227,201,.16);animation:pulse 2.4s infinite}
-@keyframes pulse{0%,100%{box-shadow:0 0 0 3px rgba(159,227,201,.16)}50%{box-shadow:0 0 0 8px rgba(159,227,201,0)}}
+.pro .on{margin:14px auto 0;width:max-content;display:flex;align-items:center;gap:7px;font-size:11px;font-weight:600;letter-spacing:.16em;color:var(--ink);padding:7px 13px 7px 11px;border-radius:999px}
+.pro .on b{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px rgba(48,209,88,.18);animation:pulse 2.4s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 3px rgba(48,209,88,.18)}50%{box-shadow:0 0 0 8px rgba(48,209,88,0)}}
 
-/* sticky mini bar */
-.bar{position:fixed;top:0;left:0;right:0;z-index:5;display:flex;align-items:center;gap:10px;padding:calc(env(safe-area-inset-top) + 9px) 16px 9px;
-  background:rgba(10,20,17,.82);backdrop-filter:saturate(1.3) blur(16px);-webkit-backdrop-filter:saturate(1.3) blur(16px);border-bottom:1px solid var(--line);
-  transform:translateY(-110%);transition:transform .35s var(--ease)}
+/* floating glass nav pill */
+.bar{position:fixed;top:calc(env(safe-area-inset-top) + 10px);left:0;right:0;z-index:5;display:flex;justify-content:center;pointer-events:none;
+  transform:translateY(-140%);transition:transform .5s var(--spring)}
 .bar.show{transform:none}
-.bar .in{max-width:520px;margin:0 auto;width:100%;display:flex;align-items:center;gap:10px}
-.bar img{width:30px;height:30px;border-radius:50%;object-fit:cover;object-position:52% 32%}
-.bar b{font-size:14px;font-weight:700}
-.bar small{font-size:11.5px;color:var(--mute);margin-left:auto}
+.bar .in{pointer-events:auto;display:flex;align-items:center;gap:10px;padding:6px 14px 6px 6px;border-radius:999px;max-width:520px}
+.bar img{width:32px;height:32px;border-radius:50%;object-fit:cover;object-position:52% 32%}
+.bar b{font-size:14px;font-weight:600}
+.bar small{display:flex;align-items:center;gap:6px;font-size:10.5px;letter-spacing:.14em;font-weight:600;color:var(--ink2)}
+.bar small i{width:6px;height:6px;border-radius:50%;background:var(--green)}
 
 /* ===== CHAT ===== */
-.log{padding:14px 0 30px}
-.day{margin:26px auto 4px;width:max-content;font-size:11px;letter-spacing:.04em;color:var(--mute);padding:4px 10px;border-radius:999px;background:rgba(238,241,236,.05)}
-.msg{display:flex;align-items:flex-end;gap:8px;margin-top:10px;opacity:0;transform:translateY(10px) scale(.985);transform-origin:bottom left;transition:opacity .45s var(--ease),transform .55s var(--ease)}
+.log{padding:14px 0 110px}
+.day{margin:28px auto 6px;width:max-content;font-size:11px;font-weight:600;letter-spacing:.04em;color:var(--ink2);padding:5px 11px;border-radius:999px}
+.msg{display:flex;align-items:flex-end;gap:8px;margin-top:8px;opacity:0;transform:translateY(14px) scale(.92);transform-origin:bottom left;transition:opacity .35s var(--ease),transform .6s var(--spring)}
 .msg.in{opacity:1;transform:none}
 .msg.q{justify-content:flex-start}
 .msg.a{justify-content:flex-end;transform-origin:bottom right}
-.msg .who{flex:none;width:28px;height:28px;border-radius:50%;object-fit:cover;object-position:52% 32%;align-self:flex-end;background:#0d1a16}
-.msg.q .who{background:#1c2a24;display:grid;place-items:center;font-size:13px;font-weight:700;color:var(--ink2)}
-.bub{position:relative;max-width:80%;padding:11px 14px;font-size:15px;line-height:1.55;letter-spacing:-.012em;word-break:keep-all;white-space:pre-line}
-.msg.q .bub{background:var(--panel);color:var(--ink);border-radius:18px 18px 18px 5px;border:1px solid var(--line)}
-.msg.a .bub{background:linear-gradient(180deg,var(--me),var(--me2));color:#f4f7f3;border-radius:18px 18px 5px 18px;font-weight:500;box-shadow:0 10px 24px -16px rgba(0,0,0,.8)}
-.msg.a .bub.draft{background:transparent;border:1px dashed rgba(238,241,236,.28);color:var(--mute);font-weight:400;font-size:13.5px}
-.msg.a .bub b{font-weight:800;color:#fff}
-.msg .bub .ty{display:inline-flex;gap:4px;align-items:center;height:18px}
-.msg .bub .ty i{width:6px;height:6px;border-radius:50%;background:#fff;opacity:.35;animation:blink 1s infinite}
+.msg .who{flex:none;width:28px;height:28px;border-radius:50%;object-fit:cover;object-position:52% 32%;align-self:flex-end}
+.msg.q .who{display:grid;place-items:center;font-size:13px;font-weight:700;color:var(--ink2);border-radius:50%}
+.bub{position:relative;max-width:78%;padding:10px 14px;font-size:16px;line-height:1.45;letter-spacing:-.015em;word-break:keep-all;white-space:pre-line;border-radius:20px}
+.msg.q .bub{color:var(--ink);border-bottom-left-radius:6px}
+.msg.a .bub{background:var(--blue);color:#fff;border-bottom-right-radius:6px;font-weight:500;box-shadow:0 10px 30px -14px rgba(10,132,255,.7)}
+.msg.a .bub.draft{background:transparent;border:1px dashed rgba(255,255,255,.28);color:var(--mute);font-weight:400;font-size:13.5px;box-shadow:none}
+.msg .bub .ty{display:inline-flex;gap:4px;align-items:center;height:20px}
+.msg .bub .ty i{width:7px;height:7px;border-radius:50%;background:#fff;opacity:.35;animation:blink 1s infinite}
 .msg .bub .ty i:nth-child(2){animation-delay:.15s}.msg .bub .ty i:nth-child(3){animation-delay:.3s}
 @keyframes blink{0%,80%,100%{opacity:.25}40%{opacity:.9}}
-.msg.a .bub[data-text]:not(.done){min-width:56px}
+.msg.a .bub[data-text]:not(.done){min-width:60px}
 .msg.a .bub.done .ty{display:none}
 
-/* link preview cards inside chat */
-.msg.a .card{max-width:80%;width:100%;margin-left:auto}
-.card{display:block;border-radius:16px;overflow:hidden;background:var(--panel);border:1px solid var(--line2);transition:transform .25s var(--ease),border-color .25s var(--ease)}
-.card:active{transform:scale(.985)}
-@media(hover:hover){.card:hover{border-color:rgba(238,241,236,.35)}}
-.card .body{display:grid;grid-template-columns:60px 1fr;gap:12px;align-items:center;padding:12px}
-.card .th{width:60px;height:60px;border-radius:12px;object-fit:cover;background:#0d1a16;display:grid;place-items:center;overflow:hidden}
+/* glass link cards */
+.msg.a .card{max-width:78%;width:100%;margin-left:auto}
+.card{display:block;border-radius:22px;overflow:hidden;transition:transform .35s var(--spring)}
+.card:active{transform:scale(.97)}
+@media(hover:hover){.card:hover{transform:translateY(-2px)}}
+.card .body{position:relative;display:grid;grid-template-columns:60px 1fr;gap:12px;align-items:center;padding:12px}
+.card .th{width:60px;height:60px;border-radius:14px;object-fit:cover;background:rgba(255,255,255,.06);display:grid;place-items:center;overflow:hidden;box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
 .card .th img{width:100%;height:100%;object-fit:cover}
-.card .th.logo img{width:auto;height:34px;object-fit:contain}
-.card .th.logo.tall img{height:46px}
+.card .th.logo img{width:auto;height:44px;object-fit:contain}
 .card .tx{min-width:0}
-.card .tx b{display:block;font-size:15.5px;font-weight:700;letter-spacing:-.02em;line-height:1.25}
-.card .tx span{display:block;margin-top:3px;font-size:12.5px;color:var(--mute);letter-spacing:-.005em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.card .tx span.d{color:var(--ink2);white-space:normal;line-height:1.45;margin-top:4px}
-.card.ws{border-color:rgba(91,141,239,.35);background:linear-gradient(135deg,#132229,#122019 70%)}
+.card .tx b{display:block;font-size:15.5px;font-weight:600;letter-spacing:-.02em;line-height:1.25}
+.card .tx span{display:block;margin-top:3px;font-size:12.5px;color:var(--ink2);letter-spacing:-.005em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.card .tx span.d{color:var(--ink2);white-space:normal;line-height:1.45;margin-top:5px}
 .card.ws .body{grid-template-columns:1fr;padding:16px 16px 14px;gap:10px}
 .card.ws .head{display:flex;align-items:center;gap:10px}
 .card.ws .head img{height:22px}
-.card.ws .head em{font-style:normal;font-size:10.5px;letter-spacing:.1em;color:#8fb0f5;border:1px solid rgba(91,141,239,.45);padding:2px 6px;border-radius:6px}
-.card.ws .tx b{font-size:17px}
-.card.ws .go{display:inline-flex;gap:6px;font-size:13px;font-weight:600;color:#8fb0f5;margin-top:4px}
+.card.ws .head em{font-style:normal;font-size:10px;letter-spacing:.12em;font-weight:600;color:var(--ink2);border:1px solid var(--g-line);padding:3px 7px;border-radius:999px}
+.card.ws .tx b{font-size:18px}
+.card.ws .go{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:#6fb0ff;margin-top:2px}
 .card.ig .th{background:linear-gradient(135deg,#f9a24a,#e1306c 55%,#7b3fe4)}
-.card.ig .th b{font-size:20px;color:#fff;font-weight:800}
+.card.ig .th b{font-size:22px;color:#fff;font-weight:700}
 
-.compose{position:sticky;bottom:0;z-index:4;margin:0 -16px;padding:10px 16px max(12px,env(safe-area-inset-bottom));display:flex;gap:8px;align-items:center;border-top:1px solid var(--line);
-  background:rgba(10,20,17,.86);backdrop-filter:saturate(1.3) blur(16px);-webkit-backdrop-filter:saturate(1.3) blur(16px)}
-.compose span{flex:1;color:var(--mute);font-size:14px;padding:10px 14px;border-radius:999px;border:1px solid var(--line2);background:rgba(238,241,236,.03)}
-.compose a{flex:none;font-size:13px;font-weight:700;color:#0a1411;background:var(--mint);padding:11px 15px;border-radius:999px}
+/* floating glass compose */
+.compose{position:fixed;left:0;right:0;bottom:0;z-index:5;display:flex;justify-content:center;padding:0 16px max(14px,env(safe-area-inset-bottom));pointer-events:none}
+.compose .in{pointer-events:auto;width:100%;max-width:520px;display:flex;gap:6px;align-items:center;padding:6px 6px 6px 18px;border-radius:999px}
+.compose span{flex:1;color:var(--mute);font-size:15px}
+.compose a{flex:none;display:flex;align-items:center;gap:6px;font-size:14px;font-weight:600;color:#fff;background:var(--blue);padding:10px 14px 10px 16px;border-radius:999px;transition:transform .3s var(--spring)}
+.compose a:active{transform:scale(.94)}
+.compose a i{font-style:normal;font-size:16px;line-height:1}
 
-footer{padding:24px 0 30px;text-align:center;color:var(--mute);font-size:11.5px;letter-spacing:.04em}
+footer{padding:0 0 100px;text-align:center;color:var(--mute);font-size:11px;letter-spacing:.14em;font-weight:600}
 
 @media(prefers-reduced-motion:reduce){
-  .msg{opacity:1;transform:none;transition:none}.pro .on b{animation:none}.msg.a .bub .ty{display:none}
+  .msg{opacity:1;transform:none;transition:none}.pro .on b{animation:none}.msg.a .bub .ty{display:none}.amb i{animation:none}
 }
 </style>
 </head>
 <body>
-<div class="tin" aria-hidden="true"></div>
+<div class="amb" aria-hidden="true"><i></i><i></i><i></i></div>
 
-<div class="bar" id="bar"><div class="in"><img src="assets/portrait.jpg" alt=""><b>강청림</b><small>외식업 기획 / 컨설팅 / 앱서비스</small></div></div>
+<div class="bar" id="bar"><div class="in glass"><img src="assets/portrait.jpg" alt=""><b>강청림</b><small><i></i>ONLINE</small></div></div>
 
 <main class="wrap">
 
 <header class="pro">
-  <img class="av" src="assets/portrait.jpg" alt="강청림">
+  <span class="ring glass"><img class="av" src="assets/portrait.jpg" alt="강청림"></span>
   <h1>강청림<small>chungrim.me</small></h1>
   <p class="tag">외식업 기획<i>/</i>컨설팅<i>/</i>앱서비스</p>
-  <div class="on"><b></b>인천에서 답합니다</div>
+  <div class="on glass"><b></b>ONLINE</div>
 </header>
 
 <section class="log" aria-label="대화">
 
-  <div class="day">처음 온 분께</div>
+  <div class="day glass">처음 온 분께</div>
 
-  <div class="msg q"><span class="who">?</span><div class="bub">뭐 하시는 분이에요?</div></div>
+  <div class="msg q"><span class="who glass">?</span><div class="bub glass">뭐 하시는 분이에요?</div></div>
   <div class="msg a"><div class="bub" data-text="인천에서 해산물 포차와 닭발 전문점을 운영하고 있고, 지금은 앱서비스 개발에 몰두 중이에요."><span class="ty"><i></i><i></i><i></i></span></div><img class="who" src="assets/portrait.jpg" alt=""></div>
 
-  <div class="msg q"><span class="who">?</span><div class="bub">앱이요? 무슨 앱이에요?</div></div>
+  <div class="msg q"><span class="who glass">?</span><div class="bub glass">앱이요? 무슨 앱이에요?</div></div>
   <div class="msg a"><div class="bub" data-text="위스토어요. 사장님과 직원이 따로 일하지 않고 함께 매장을 만들어가게 하는 앱이에요. 제 가게에서 먼저 쓰고 있어요."><span class="ty"><i></i><i></i><i></i></span></div><img class="who" src="assets/portrait.jpg" alt=""></div>
-  <div class="msg a"><a class="card ws" href="https://westoreapp.com" target="_blank" rel="noopener">
+  <div class="msg a"><a class="card ws glass" href="https://westoreapp.com" target="_blank" rel="noopener">
     <div class="body">
       <div class="head"><img src="assets/logos/d-westore.png" alt="위스토어"><em>APP</em></div>
       <div class="tx"><b>우리가 함께 운영하는 가게</b><span class="d">출퇴근, 근무표, 급여, 공지까지. 매장 운영을 한 곳에서.</span></div>
-      <span class="go">westoreapp.com →</span>
+      <span class="go">westoreapp.com <i>›</i></span>
     </div>
   </a></div>
 
-  <div class="msg q"><span class="who">?</span><div class="bub">가게는 어디에 있어요?</div></div>
+  <div class="msg q"><span class="who glass">?</span><div class="bub glass">가게는 어디에 있어요?</div></div>
   <div class="msg a"><div class="bub" data-text="구월동에 셋, 부평에 하나, 전주에 하나 있어요. 지도 보내 드릴게요."><span class="ty"><i></i><i></i><i></i></span></div><img class="who" src="assets/portrait.jpg" alt=""></div>
-  <div class="msg a"><a class="card" href="https://naver.me/FBe2jxbP" target="_blank" rel="noopener"><div class="body"><span class="th"><img src="assets/sea.jpg" alt=""></span><div class="tx"><b>뱃꼬동 해물포차 구월점</b><span>네이버 플레이스</span></div></div></a></div>
-  <div class="msg a"><a class="card" href="https://naver.me/FLEIjH4e" target="_blank" rel="noopener"><div class="body"><span class="th"><img src="assets/bupyeong.jpg" alt=""></span><div class="tx"><b>뱃꼬동 해물포차 부평점</b><span>네이버 플레이스</span></div></div></a></div>
-  <div class="msg a"><a class="card" href="https://naver.me/GJ5AwLhq" target="_blank" rel="noopener"><div class="body"><span class="th"><img src="assets/shop.jpg" alt=""></span><div class="tx"><b>뱃꼬동 숙성집 구월점</b><span>네이버 플레이스</span></div></div></a></div>
-  <div class="msg a"><a class="card" href="https://naver.me/GNJh3uQR" target="_blank" rel="noopener"><div class="body"><span class="th logo tall"><img src="assets/logos/d-sukseongjip.png" alt=""></span><div class="tx"><b>뱃꼬동 숙성집 전주 신시가지점</b><span>네이버 플레이스</span></div></div></a></div>
-  <div class="msg a"><a class="card" href="https://naver.me/FbVoibsV" target="_blank" rel="noopener"><div class="body"><span class="th"><img src="assets/chicken.jpg" alt=""></span><div class="tx"><b>철계직화장 구월점</b><span>네이버 플레이스</span></div></div></a></div>
+  <div class="msg a"><a class="card glass" href="https://naver.me/FBe2jxbP" target="_blank" rel="noopener"><div class="body"><span class="th"><img src="assets/sea.jpg" alt=""></span><div class="tx"><b>뱃꼬동 해물포차 구월점</b><span>네이버 플레이스</span></div></div></a></div>
+  <div class="msg a"><a class="card glass" href="https://naver.me/FLEIjH4e" target="_blank" rel="noopener"><div class="body"><span class="th"><img src="assets/bupyeong.jpg" alt=""></span><div class="tx"><b>뱃꼬동 해물포차 부평점</b><span>네이버 플레이스</span></div></div></a></div>
+  <div class="msg a"><a class="card glass" href="https://naver.me/GJ5AwLhq" target="_blank" rel="noopener"><div class="body"><span class="th"><img src="assets/shop.jpg" alt=""></span><div class="tx"><b>뱃꼬동 숙성집 구월점</b><span>네이버 플레이스</span></div></div></a></div>
+  <div class="msg a"><a class="card glass" href="https://naver.me/GNJh3uQR" target="_blank" rel="noopener"><div class="body"><span class="th logo"><img src="assets/logos/d-sukseongjip.png" alt=""></span><div class="tx"><b>뱃꼬동 숙성집 전주 신시가지점</b><span>네이버 플레이스</span></div></div></a></div>
+  <div class="msg a"><a class="card glass" href="https://naver.me/FbVoibsV" target="_blank" rel="noopener"><div class="body"><span class="th"><img src="assets/chicken.jpg" alt=""></span><div class="tx"><b>철계직화장 구월점</b><span>네이버 플레이스</span></div></div></a></div>
 
-  <div class="day">자주 받는 질문</div>
+  <div class="day glass">자주 받는 질문</div>
 
-  <div class="msg q"><span class="who">?</span><div class="bub">뱃꼬동, 이름이 왜 뱃꼬동이에요?</div></div>
+  <div class="msg q"><span class="who glass">?</span><div class="bub glass">뱃꼬동, 이름이 왜 뱃꼬동이에요?</div></div>
   <div class="msg a"><div class="bub draft">이름의 뜻과 지은 사연. 청림님 답변 자리.</div><img class="who" src="assets/portrait.jpg" alt=""></div>
 
-  <div class="msg q"><span class="who">?</span><div class="bub">첫 가게는 몇 살에 열었어요?</div></div>
+  <div class="msg q"><span class="who glass">?</span><div class="bub glass">첫 가게는 몇 살에 열었어요?</div></div>
   <div class="msg a"><div class="bub draft">나이, 첫 가게 위치와 크기. 청림님 답변 자리.</div><img class="who" src="assets/portrait.jpg" alt=""></div>
 
-  <div class="msg q"><span class="who">?</span><div class="bub">망할 뻔한 적 있어요?</div></div>
+  <div class="msg q"><span class="who glass">?</span><div class="bub glass">망할 뻔한 적 있어요?</div></div>
   <div class="msg a"><div class="bub draft">제일 힘들었던 시기와 그때 무엇을 바꿨는지. 청림님 답변 자리.</div><img class="who" src="assets/portrait.jpg" alt=""></div>
 
-  <div class="msg q"><span class="who">?</span><div class="bub">웨이팅이 생기기 시작한 건 언제부터예요? 계기가 있었어요?</div></div>
+  <div class="msg q"><span class="who glass">?</span><div class="bub glass">웨이팅이 생기기 시작한 건 언제부터예요? 계기가 있었어요?</div></div>
   <div class="msg a"><div class="bub draft">전환점이 된 메뉴, 사진, 손님, 사건. 청림님 답변 자리.</div><img class="who" src="assets/portrait.jpg" alt=""></div>
 
-  <div class="msg q"><span class="who">?</span><div class="bub">해물포차, 숙성집, 철계직화장. 왜 하나로 안 하고 세 개나 해요?</div></div>
+  <div class="msg q"><span class="who glass">?</span><div class="bub glass">해물포차, 숙성집, 철계직화장. 왜 하나로 안 하고 세 개나 해요?</div></div>
   <div class="msg a"><div class="bub draft">브랜드를 나눈 이유와 각각의 역할. 청림님 답변 자리.</div><img class="who" src="assets/portrait.jpg" alt=""></div>
 
-  <div class="msg q"><span class="who">?</span><div class="bub">메뉴 가격은 어떤 기준으로 정해요?</div></div>
+  <div class="msg q"><span class="who glass">?</span><div class="bub glass">메뉴 가격은 어떤 기준으로 정해요?</div></div>
   <div class="msg a"><div class="bub draft">가격을 정하는 기준과 원칙. 청림님 답변 자리.</div><img class="who" src="assets/portrait.jpg" alt=""></div>
 
-  <div class="day">사람과 운영</div>
+  <div class="day glass">사람과 운영</div>
 
-  <div class="msg q"><span class="who">?</span><div class="bub">가게가 여러 개면 사장이 매일 어디에 있어요?</div></div>
+  <div class="msg q"><span class="who glass">?</span><div class="bub glass">가게가 여러 개면 사장이 매일 어디에 있어요?</div></div>
   <div class="msg a"><div class="bub draft">하루 일과, 점장과 동업자와 역할을 어떻게 나누는지. 청림님 답변 자리.</div><img class="who" src="assets/portrait.jpg" alt=""></div>
 
-  <div class="msg q"><span class="who">?</span><div class="bub">직원한테 제일 자주 하는 말이 뭐예요?</div></div>
+  <div class="msg q"><span class="who glass">?</span><div class="bub glass">직원한테 제일 자주 하는 말이 뭐예요?</div></div>
   <div class="msg a"><div class="bub draft">한 문장. 그리고 그 말을 하는 이유. 청림님 답변 자리.</div><img class="who" src="assets/portrait.jpg" alt=""></div>
 
-  <div class="msg q"><span class="who">?</span><div class="bub">사장이 없어도 가게가 돌아가게 하려면 뭐가 제일 중요해요?</div></div>
+  <div class="msg q"><span class="who glass">?</span><div class="bub glass">사장이 없어도 가게가 돌아가게 하려면 뭐가 제일 중요해요?</div></div>
   <div class="msg a"><div class="bub draft">운영 철학의 핵심 한 가지. 청림님 답변 자리.</div><img class="who" src="assets/portrait.jpg" alt=""></div>
 
-  <div class="day">위스토어</div>
+  <div class="day glass">위스토어</div>
 
-  <div class="msg q"><span class="who">?</span><div class="bub">가게 하면서 앱까지 만드는 이유가 뭐예요?</div></div>
+  <div class="msg q"><span class="who glass">?</span><div class="bub glass">가게 하면서 앱까지 만드는 이유가 뭐예요?</div></div>
   <div class="msg a"><div class="bub draft">매장에서 겪은 불편, 있는 앱들이 안 맞았던 이유. 청림님 답변 자리.</div><img class="who" src="assets/portrait.jpg" alt=""></div>
 
-  <div class="msg q"><span class="who">?</span><div class="bub">컨설팅은 어떤 사람한테, 뭘 해줘요?</div></div>
+  <div class="msg q"><span class="who glass">?</span><div class="bub glass">컨설팅은 어떤 사람한테, 뭘 해줘요?</div></div>
   <div class="msg a"><div class="bub draft">대상, 범위, 안 하는 것. 청림님 답변 자리.</div><img class="who" src="assets/portrait.jpg" alt=""></div>
 
-  <div class="day">그래서</div>
+  <div class="day glass">그래서</div>
 
-  <div class="msg q"><span class="who">?</span><div class="bub">다음엔 뭐 해요?</div></div>
+  <div class="msg q"><span class="who glass">?</span><div class="bub glass">다음엔 뭐 해요?</div></div>
   <div class="msg a"><div class="bub draft">준비 중인 브랜드와 서비스. 말할 수 있는 만큼만. 청림님 답변 자리.</div><img class="who" src="assets/portrait.jpg" alt=""></div>
 
-  <div class="msg q"><span class="who">?</span><div class="bub">더 물어봐도 돼요?</div></div>
+  <div class="msg q"><span class="who glass">?</span><div class="bub glass">더 물어봐도 돼요?</div></div>
   <div class="msg a"><div class="bub" data-text="네, 인스타로 오세요."><span class="ty"><i></i><i></i><i></i></span></div><img class="who" src="assets/portrait.jpg" alt=""></div>
-  <div class="msg a"><a class="card ig" href="https://instagram.com/cxnrim" target="_blank" rel="noopener"><div class="body"><span class="th"><b>@</b></span><div class="tx"><b>@cxnrim</b><span>Instagram</span></div></div></a></div>
+  <div class="msg a"><a class="card ig glass" href="https://instagram.com/cxnrim" target="_blank" rel="noopener"><div class="body"><span class="th"><b>@</b></span><div class="tx"><b>@cxnrim</b><span>Instagram</span></div></div></a></div>
 
 </section>
 
-<div class="compose"><span>궁금한 게 더 있으면</span><a href="https://instagram.com/cxnrim" target="_blank" rel="noopener">DM 보내기</a></div>
-
 <footer>CHUNGRIM.ME</footer>
 </main>
+
+<div class="compose"><div class="in glass"><span>궁금한 게 더 있으면</span><a href="https://instagram.com/cxnrim" target="_blank" rel="noopener">DM 보내기 <i>↑</i></a></div></div>
 
 <script>
 (function(){
   var rm=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var bar=document.getElementById('bar'),pro=document.querySelector('.pro');
-  window.addEventListener('scroll',function(){bar.classList.toggle('show',window.scrollY>pro.offsetHeight-20)},{passive:true});
+  window.addEventListener('scroll',function(){bar.classList.toggle('show',window.scrollY>pro.offsetHeight-10)},{passive:true});
   var msgs=document.querySelectorAll('.msg');
   function reveal(m){
     m.classList.add('in');

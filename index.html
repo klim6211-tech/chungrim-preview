@@ -5,15 +5,15 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>강청림 chungrim.me</title>
 <meta name="description" content="인천에서 해산물 포차와 닭발 전문점을 운영하고, 지금은 앱서비스 개발에 몰두 중인 사람. 외식업 기획 / 컨설팅 / 앱서비스.">
-<meta name="theme-color" content="#000000">
+<meta name="theme-color" content="#0a0d16">
 <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <style>
 :root{
-  --bg:#000;
-  --ink:#f5f5f7;--ink2:#a1a1a6;--mute:#6e6e73;
+  --bg:#0a0d16;
+  --ink:#f7f8fb;--ink2:#b4b8c4;--mute:#7f8494;
   --blue:#0A84FF;--green:#30D158;
-  --g-fill:rgba(255,255,255,.07);--g-line:rgba(255,255,255,.14);--g-hi:rgba(255,255,255,.28);
+  --g-fill:rgba(255,255,255,.10);--g-line:rgba(255,255,255,.20);--g-hi:rgba(255,255,255,.36);
   --spring:cubic-bezier(.34,1.4,.4,1);--ease:cubic-bezier(.2,.7,.2,1);
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -22,13 +22,13 @@ body{margin:0;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Pre
 a{color:inherit;text-decoration:none}
 
 /* ambient color behind the glass */
-.amb{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none;background:#000}
-.amb i{position:absolute;border-radius:50%;filter:blur(70px);opacity:.55;will-change:transform;animation:drift 22s ease-in-out infinite alternate}
-.amb i:nth-child(1){width:60vmax;height:60vmax;left:-20vmax;top:-18vmax;background:#1c3a8a}
-.amb i:nth-child(2){width:50vmax;height:50vmax;right:-18vmax;top:22vh;background:#3a1a6e;animation-duration:27s;animation-delay:-8s}
-.amb i:nth-child(3){width:46vmax;height:46vmax;left:-8vmax;bottom:-20vmax;background:#0b4d5c;animation-duration:31s;animation-delay:-15s}
+.amb{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none;background:var(--bg)}
+.amb i{position:absolute;border-radius:50%;filter:blur(80px);opacity:.75;will-change:transform;animation:drift 22s ease-in-out infinite alternate}
+.amb i:nth-child(1){width:60vmax;height:60vmax;left:-20vmax;top:-18vmax;background:#2d63e6}
+.amb i:nth-child(2){width:50vmax;height:50vmax;right:-18vmax;top:22vh;background:#7a3ddb;animation-duration:27s;animation-delay:-8s}
+.amb i:nth-child(3){width:46vmax;height:46vmax;left:-8vmax;bottom:-20vmax;background:#149bb4;animation-duration:31s;animation-delay:-15s}
 @keyframes drift{to{transform:translate(9vw,7vh) scale(1.12)}}
-.amb::after{content:"";position:absolute;inset:0;background:radial-gradient(90% 70% at 50% 40%,transparent,rgba(0,0,0,.55))}
+.amb::after{content:"";position:absolute;inset:0;background:radial-gradient(90% 70% at 50% 40%,transparent,rgba(0,0,0,.38))}
 
 /* glass primitive */
 .glass{position:relative;background:var(--g-fill);border:1px solid var(--g-line);
@@ -47,9 +47,7 @@ a{color:inherit;text-decoration:none}
 .pro h1 small{display:block;margin-top:4px;font-size:12.5px;font-weight:500;letter-spacing:.02em;color:var(--mute)}
 .pro .tag{margin:10px 0 0;font-size:15px;color:var(--ink2);letter-spacing:-.01em;font-weight:500}
 .pro .tag i{font-style:normal;color:var(--mute);margin:0 8px;font-weight:300}
-.pro .on{margin:14px auto 0;width:max-content;display:flex;align-items:center;gap:7px;font-size:11px;font-weight:600;letter-spacing:.16em;color:var(--ink);padding:7px 13px 7px 11px;border-radius:999px}
-.pro .on b{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 3px rgba(48,209,88,.18);animation:pulse 2.4s infinite}
-@keyframes pulse{0%,100%{box-shadow:0 0 0 3px rgba(48,209,88,.18)}50%{box-shadow:0 0 0 8px rgba(48,209,88,0)}}
+.pro .on{margin:14px auto 0;width:max-content;font-size:11.5px;font-weight:600;letter-spacing:.08em;color:var(--ink);padding:7px 14px;border-radius:999px}
 
 /* floating glass nav pill */
 .bar{position:fixed;top:calc(env(safe-area-inset-top) + 10px);left:0;right:0;z-index:5;display:flex;justify-content:center;pointer-events:none;
@@ -58,8 +56,7 @@ a{color:inherit;text-decoration:none}
 .bar .in{pointer-events:auto;display:flex;align-items:center;gap:10px;padding:6px 14px 6px 6px;border-radius:999px;max-width:520px}
 .bar img{width:32px;height:32px;border-radius:50%;object-fit:cover;object-position:52% 32%}
 .bar b{font-size:14px;font-weight:600}
-.bar small{display:flex;align-items:center;gap:6px;font-size:10.5px;letter-spacing:.14em;font-weight:600;color:var(--ink2)}
-.bar small i{width:6px;height:6px;border-radius:50%;background:var(--green)}
+.bar small{font-size:10.5px;letter-spacing:.06em;font-weight:600;color:var(--ink2)}
 
 /* ===== CHAT ===== */
 .log{padding:14px 0 110px}
@@ -73,7 +70,6 @@ a{color:inherit;text-decoration:none}
 .bub{position:relative;max-width:78%;padding:10px 14px;font-size:16px;line-height:1.45;letter-spacing:-.015em;word-break:keep-all;white-space:pre-line;border-radius:20px}
 .msg.q .bub{color:var(--ink);border-bottom-left-radius:6px}
 .msg.a .bub{background:var(--blue);color:#fff;border-bottom-right-radius:6px;font-weight:500;box-shadow:0 10px 30px -14px rgba(10,132,255,.7)}
-.msg.a .bub.draft{background:transparent;border:1px dashed rgba(255,255,255,.28);color:var(--mute);font-weight:400;font-size:13.5px;box-shadow:none}
 .msg .bub .ty{display:inline-flex;gap:4px;align-items:center;height:20px}
 .msg .bub .ty i{width:7px;height:7px;border-radius:50%;background:#fff;opacity:.35;animation:blink 1s infinite}
 .msg .bub .ty i:nth-child(2){animation-delay:.15s}.msg .bub .ty i:nth-child(3){animation-delay:.3s}
@@ -114,14 +110,14 @@ a{color:inherit;text-decoration:none}
 footer{padding:0 0 100px;text-align:center;color:var(--mute);font-size:11px;letter-spacing:.14em;font-weight:600}
 
 @media(prefers-reduced-motion:reduce){
-  .msg{opacity:1;transform:none;transition:none}.pro .on b{animation:none}.msg.a .bub .ty{display:none}.amb i{animation:none}
+  .msg{opacity:1;transform:none;transition:none}.msg.a .bub .ty{display:none}.amb i{animation:none}
 }
 </style>
 </head>
 <body>
 <div class="amb" aria-hidden="true"><i></i><i></i><i></i></div>
 
-<div class="bar" id="bar"><div class="in glass"><img src="assets/portrait.jpg" alt=""><b>강청림</b><small><i></i>ONLINE</small></div></div>
+<div class="bar" id="bar"><div class="in glass"><img src="assets/portrait.jpg" alt=""><b>강청림</b><small>Creative &amp; Development</small></div></div>
 
 <main class="wrap">
 
@@ -129,7 +125,7 @@ footer{padding:0 0 100px;text-align:center;color:var(--mute);font-size:11px;lett
   <span class="ring glass"><img class="av" src="assets/portrait.jpg" alt="강청림"></span>
   <h1>강청림<small>chungrim.me</small></h1>
   <p class="tag">외식업 기획<i>/</i>컨설팅<i>/</i>앱서비스</p>
-  <div class="on glass"><b></b>ONLINE</div>
+  <div class="on glass">Creative &amp; Development</div>
 </header>
 
 <section class="log" aria-label="대화">
@@ -157,50 +153,51 @@ footer{padding:0 0 100px;text-align:center;color:var(--mute);font-size:11px;lett
   <div class="msg a"><a class="card glass" href="https://naver.me/GNJh3uQR" target="_blank" rel="noopener"><div class="body"><span class="th logo"><img src="assets/logos/d-sukseongjip.png" alt=""></span><div class="tx"><b>뱃꼬동 숙성집 전주 신시가지점</b><span>네이버 플레이스</span></div></div></a></div>
   <div class="msg a"><a class="card glass" href="https://naver.me/FbVoibsV" target="_blank" rel="noopener"><div class="body"><span class="th"><img src="assets/chicken.jpg" alt=""></span><div class="tx"><b>철계직화장 구월점</b><span>네이버 플레이스</span></div></div></a></div>
 
-  <div class="day glass">자주 받는 질문</div>
+  <div class="day glass">시작</div>
 
   <div class="msg q"><span class="who glass">?</span><div class="bub glass">뱃꼬동, 이름이 왜 뱃꼬동이에요?</div></div>
-  <div class="msg a"><div class="bub draft">이름의 뜻과 지은 사연. 청림님 답변 자리.</div><img class="who" src="assets/portrait.jpg" alt=""></div>
-
+  <div class="msg a"><div class="bub" data-text="상상하시는 대로 뱃고동 발음 그대로 쓴 거예요. 해산물 포차니까 바다와 관련된 이름으로 지었고, 대단한 스토리텔링은 없어요."><span class="ty"><i></i><i></i><i></i></span></div><img class="who" src="assets/portrait.jpg" alt=""></div>
+  <div class="msg a"><div class="bub" data-text="과장되지 않고, 대중적이고, 편안한 가게. 동네 오래된 노포의 정겨움을 흉내 내는 게 아니라 진짜 그런 가게가 되는 것. 이게 1호점을 열 때의 철학이었어요."><span class="ty"><i></i><i></i><i></i></span></div><img class="who" src="assets/portrait.jpg" alt=""></div>
   <div class="msg q"><span class="who glass">?</span><div class="bub glass">첫 가게는 몇 살에 열었어요?</div></div>
-  <div class="msg a"><div class="bub draft">나이, 첫 가게 위치와 크기. 청림님 답변 자리.</div><img class="who" src="assets/portrait.jpg" alt=""></div>
-
+  <div class="msg a"><div class="bub" data-text="26살에 12평짜리 작은 선술집으로 시작했어요. 전통주와 꼬치를 팔았는데, 좋은 손님들도 많이 만났고 많은 성장의 밑거름이 된 것 같아요."><span class="ty"><i></i><i></i><i></i></span></div><img class="who" src="assets/portrait.jpg" alt=""></div>
   <div class="msg q"><span class="who glass">?</span><div class="bub glass">망할 뻔한 적 있어요?</div></div>
-  <div class="msg a"><div class="bub draft">제일 힘들었던 시기와 그때 무엇을 바꿨는지. 청림님 답변 자리.</div><img class="who" src="assets/portrait.jpg" alt=""></div>
+  <div class="msg a"><div class="bub" data-text="망했었죠. 첫 가게도, 두 번째, 세 번째 가게도 실패했고 제 능력 부족이었어요. 하지만 지금의 단단한 발판이 되어 있죠."><span class="ty"><i></i><i></i><i></i></span></div><img class="who" src="assets/portrait.jpg" alt=""></div>
+
+  <div class="day glass">뱃꼬동</div>
 
   <div class="msg q"><span class="who glass">?</span><div class="bub glass">웨이팅이 생기기 시작한 건 언제부터예요? 계기가 있었어요?</div></div>
-  <div class="msg a"><div class="bub draft">전환점이 된 메뉴, 사진, 손님, 사건. 청림님 답변 자리.</div><img class="who" src="assets/portrait.jpg" alt=""></div>
-
-  <div class="msg q"><span class="who glass">?</span><div class="bub glass">해물포차, 숙성집, 철계직화장. 왜 하나로 안 하고 세 개나 해요?</div></div>
-  <div class="msg a"><div class="bub draft">브랜드를 나눈 이유와 각각의 역할. 청림님 답변 자리.</div><img class="who" src="assets/portrait.jpg" alt=""></div>
-
-  <div class="msg q"><span class="who glass">?</span><div class="bub glass">메뉴 가격은 어떤 기준으로 정해요?</div></div>
-  <div class="msg a"><div class="bub draft">가격을 정하는 기준과 원칙. 청림님 답변 자리.</div><img class="who" src="assets/portrait.jpg" alt=""></div>
+  <div class="msg a"><div class="bub" data-text="새로운 동업자 친구가 합류하고부터였어요. 그 친구는 마케팅에 아주 공격적인 스타일이었고, 그때 광고한 영상이 100만 조회수가 나왔어요."><span class="ty"><i></i><i></i><i></i></span></div><img class="who" src="assets/portrait.jpg" alt=""></div>
+  <div class="msg a"><div class="bub" data-text="그때부터 줄을 섰고, 마침 기반을 단단하게 다져 놓았던 덕에 지금까지 손님들을 유지하고 있다고 생각해요."><span class="ty"><i></i><i></i><i></i></span></div><img class="who" src="assets/portrait.jpg" alt=""></div>
 
   <div class="day glass">사람과 운영</div>
 
-  <div class="msg q"><span class="who glass">?</span><div class="bub glass">가게가 여러 개면 사장이 매일 어디에 있어요?</div></div>
-  <div class="msg a"><div class="bub draft">하루 일과, 점장과 동업자와 역할을 어떻게 나누는지. 청림님 답변 자리.</div><img class="who" src="assets/portrait.jpg" alt=""></div>
+  <div class="msg q"><span class="who glass">?</span><div class="bub glass">가게가 여러 개면 매일 어디에 있어요?</div></div>
+  <div class="msg a"><div class="bub" data-text="외근이 없으면 대부분 집에서 업무를 봐요. 요즘 개발 중인 위스토어, 기획, 디자인 같은 일이라 사무직에 가깝네요."><span class="ty"><i></i><i></i><i></i></span></div><img class="who" src="assets/portrait.jpg" alt=""></div>
+  <div class="msg q"><span class="who glass">?</span><div class="bub glass">동업을 하신다고 들었어요. 소개해 주세요. 싸우지는 않아요?</div></div>
+  <div class="msg a"><div class="bub" data-text="저랑 심윤범, 신영웅 세 명이 동업을 하고 있어요. 각자 포지셔닝이 잘 되어 있어요."><span class="ty"><i></i><i></i><i></i></span></div><img class="who" src="assets/portrait.jpg" alt=""></div>
+  <div class="msg a"><div class="bub" data-text="윤범이는 강한 책임감과 특출난 경영 능력으로 CEO 역할을, 영웅이는 오피스 업무와 가장 중요한 마케팅을, 저는 기획과 개발, 크리에이티브 역할을 하고 있어요."><span class="ty"><i></i><i></i><i></i></span></div><img class="who" src="assets/portrait.jpg" alt=""></div>
 
-  <div class="msg q"><span class="who glass">?</span><div class="bub glass">직원한테 제일 자주 하는 말이 뭐예요?</div></div>
-  <div class="msg a"><div class="bub draft">한 문장. 그리고 그 말을 하는 이유. 청림님 답변 자리.</div><img class="who" src="assets/portrait.jpg" alt=""></div>
+  <div class="day glass">위스토어와 AI</div>
 
-  <div class="msg q"><span class="who glass">?</span><div class="bub glass">사장이 없어도 가게가 돌아가게 하려면 뭐가 제일 중요해요?</div></div>
-  <div class="msg a"><div class="bub draft">운영 철학의 핵심 한 가지. 청림님 답변 자리.</div><img class="who" src="assets/portrait.jpg" alt=""></div>
-
-  <div class="day glass">위스토어</div>
-
-  <div class="msg q"><span class="who glass">?</span><div class="bub glass">가게 하면서 앱까지 만드는 이유가 뭐예요?</div></div>
-  <div class="msg a"><div class="bub draft">매장에서 겪은 불편, 있는 앱들이 안 맞았던 이유. 청림님 답변 자리.</div><img class="who" src="assets/portrait.jpg" alt=""></div>
-
-  <div class="msg q"><span class="who glass">?</span><div class="bub glass">컨설팅은 어떤 사람한테, 뭘 해줘요?</div></div>
-  <div class="msg a"><div class="bub draft">대상, 범위, 안 하는 것. 청림님 답변 자리.</div><img class="who" src="assets/portrait.jpg" alt=""></div>
+  <div class="msg q"><span class="who glass">?</span><div class="bub glass">가게를 운영하면서 앱까지 만드는 이유가 뭐예요?</div></div>
+  <div class="msg a"><div class="bub" data-text="요즘은 AI든 각종 업무 시스템이든 많이 쓰는 시대인데, 요식업 현장은 아직도 아날로그 방식이 많이 남아 있어요. 매장 운영의 기준이 사장님 머릿속에 있는 거죠."><span class="ty"><i></i><i></i><i></i></span></div><img class="who" src="assets/portrait.jpg" alt=""></div>
+  <div class="msg a"><div class="bub" data-text="대기업이나 프랜차이즈 본사에는 ERP나 자체 운영 시스템이 있지만, 개인 자영업자가 부담 없이 쓸 수 있는 매장 운영 전용 시스템은 생각보다 없었어요."><span class="ty"><i></i><i></i><i></i></span></div><img class="who" src="assets/portrait.jpg" alt=""></div>
+  <div class="msg a"><div class="bub" data-text="저도 매장을 여러 개 운영하면서 겪은 불편을 해결하려고, 제가 직접 쓰려고 만들기 시작했어요. 출퇴근, 매출, 발주, 스케줄, 급여처럼 흩어져 있던 업무를 한곳에 모으고 싶었던 거죠."><span class="ty"><i></i><i></i><i></i></span></div><img class="who" src="assets/portrait.jpg" alt=""></div>
+  <div class="msg a"><div class="bub" data-text="그렇게 실제 매장에서 쓰다 보니 다른 매장도 필요로 하는 문제가 비슷하다는 걸 알게 됐고, 결국 지금의 위스토어라는 서비스까지 이어지게 됐네요."><span class="ty"><i></i><i></i><i></i></span></div><img class="who" src="assets/portrait.jpg" alt=""></div>
+  <div class="msg q"><span class="who glass">?</span><div class="bub glass">AI를 잘 쓰시던데, 원래 컴퓨터 전공이에요?</div></div>
+  <div class="msg a"><div class="bub" data-text="아니요, 디자인과 출신이에요. 원래부터 이 분야에 관심이 많았고 평소 업무에서도 AI를 자주 써 왔어요. 개발 전공자는 아니지만, 필요한 걸 직접 만들고 문제를 해결하는 과정에서 자연스럽게 AI를 더 깊게 쓰게 됐어요."><span class="ty"><i></i><i></i><i></i></span></div><img class="who" src="assets/portrait.jpg" alt=""></div>
+  <div class="msg q"><span class="who glass">?</span><div class="bub glass">AI 잘 쓰는 팁이 있으면 알려 주실 수 있나요?</div></div>
+  <div class="msg a"><div class="bub" data-text="저는 AI를 쓸 때 기획 → 질문 → 실행 → 검토, 이 네 단계를 가장 중요하게 봐요."><span class="ty"><i></i><i></i><i></i></span></div><img class="who" src="assets/portrait.jpg" alt=""></div>
+  <div class="msg a"><div class="bub" data-text="먼저 내가 원하는 결과를 최대한 구체적으로 상상하고 기획해요. 그다음 AI에게 질문하고 실행한 뒤, 나온 결과를 직접 검토해요. 원하는 결과가 아니라면 질문만 조금 바꾸는 게 아니라, 애초에 기획 자체가 부족했던 건 아닌지 다시 확인해요. 결국 이 과정을 계속 반복하는 거예요."><span class="ty"><i></i><i></i><i></i></span></div><img class="who" src="assets/portrait.jpg" alt=""></div>
+  <div class="msg a"><div class="bub" data-text="AI를 어렵게 생각할 필요는 없는 것 같아요. 결국 입력 → 출력이니까요. 좋은 결과를 얻으려면 좋은 입력이 필요하고, 그 입력을 만드는 건 결국 사람의 상상력과 기획이라고 생각해요."><span class="ty"><i></i><i></i><i></i></span></div><img class="who" src="assets/portrait.jpg" alt=""></div>
 
   <div class="day glass">그래서</div>
 
-  <div class="msg q"><span class="who glass">?</span><div class="bub glass">다음엔 뭐 해요?</div></div>
-  <div class="msg a"><div class="bub draft">준비 중인 브랜드와 서비스. 말할 수 있는 만큼만. 청림님 답변 자리.</div><img class="who" src="assets/portrait.jpg" alt=""></div>
-
+  <div class="msg q"><span class="who glass">?</span><div class="bub glass">컨설팅은 어떤 걸 하시는 거예요?</div></div>
+  <div class="msg a"><div class="bub" data-text="저희 브랜드나 경험이 필요한 분들, 혹은 창업 과정에서 도움이 필요한 분들이 있다면 어떤 형태로든 도움을 드리고 있어요."><span class="ty"><i></i><i></i><i></i></span></div><img class="who" src="assets/portrait.jpg" alt=""></div>
+  <div class="msg a"><div class="bub" data-text="컨설팅을 하나의 상품처럼 판매한다기보다, 실제 매장을 운영하고 브랜드를 만들면서 쌓은 경험을 바탕으로 브랜딩, 메뉴, 운영 방식, 시스템 구축, 창업 방향 같은 부분에서 실질적인 도움을 드리는 것에 가까워요. 각 상황에 맞춰 필요한 부분만 같이 풀어 가는 형태라고 보시면 돼요."><span class="ty"><i></i><i></i><i></i></span></div><img class="who" src="assets/portrait.jpg" alt=""></div>
+  <div class="msg q"><span class="who glass">?</span><div class="bub glass">다음에 준비하고 있는 건 뭐예요?</div></div>
+  <div class="msg a"><div class="bub" data-text="새로운 브랜드 기획과 뱃꼬동 다음 지점 오픈을 준비하고 있어요."><span class="ty"><i></i><i></i><i></i></span></div><img class="who" src="assets/portrait.jpg" alt=""></div>
   <div class="msg q"><span class="who glass">?</span><div class="bub glass">더 물어봐도 돼요?</div></div>
   <div class="msg a"><div class="bub" data-text="네, 인스타로 오세요."><span class="ty"><i></i><i></i><i></i></span></div><img class="who" src="assets/portrait.jpg" alt=""></div>
   <div class="msg a"><a class="card ig glass" href="https://instagram.com/cxnrim" target="_blank" rel="noopener"><div class="body"><span class="th"><b>@</b></span><div class="tx"><b>@cxnrim</b><span>Instagram</span></div></div></a></div>

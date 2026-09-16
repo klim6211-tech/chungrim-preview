@@ -60,11 +60,12 @@ a{color:inherit;text-decoration:none}
 
 /* ===== CHAT ===== */
 .log{padding:14px 0 110px}
-.day{margin:34px 0 8px;display:flex;align-items:center;gap:12px;font-size:11.5px;font-weight:500;letter-spacing:.02em;color:var(--mute)}
+.day{margin:48px 0 14px;display:flex;align-items:center;gap:12px;font-size:11.5px;font-weight:500;letter-spacing:.02em;color:var(--mute)}
 .day::before,.day::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,transparent,var(--g-line))}
 .day::after{background:linear-gradient(90deg,var(--g-line),transparent)}
-.msg{display:flex;align-items:flex-end;gap:8px;margin-top:8px;opacity:0;transform:translateY(14px) scale(.92);transform-origin:bottom left;transition:opacity .35s var(--ease),transform .6s var(--spring)}
+.msg{display:flex;align-items:flex-end;gap:8px;margin-top:12px;opacity:0;transform:translateY(14px) scale(.92);transform-origin:bottom left;transition:opacity .35s var(--ease),transform .6s var(--spring)}
 .msg.in{opacity:1;transform:none}
+.msg.q+.msg.a,.msg.a+.msg.q{margin-top:26px}
 .msg.q{justify-content:flex-start}
 .msg.a{justify-content:flex-end;transform-origin:bottom right}
 .msg .who{flex:none;width:28px;height:28px;border-radius:50%;object-fit:cover;object-position:52% 32%;align-self:flex-end}
